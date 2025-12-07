@@ -582,10 +582,10 @@
                     "value": "100%"
                 }
             ],
-            "correct_option": "b",
             "explanation": "El ciclo es: Ejecución (100ms) -> Overhead(2ms) -> Ejecución(100ms) -> Overhead(2ms) -> Ejecución(100ms) -> Overhead(2ms) -> Planificador(10ms). Total CPU útil = 300ms. Total tiempo = 316ms. Utilización = 300/316 ≈ 94.9%.",
-            "is_ai_deduced": true,
-            "source_file": "PEP1-SISTOPE-2024-2.pdf"
+            "correct": "b",
+            "source": "PEP1-SISTOPE-2024-2.pdf",
+            "ai_deduced": true
         },
         {
             "subject": "Sistemas Operativos",
@@ -608,10 +608,10 @@
                     "value": "pid_t pid = fork()"
                 }
             ],
-            "correct_option": "d",
             "explanation": "Todas son llamadas al sistema (cambio de modo). sleep, exit y waitpid bloquean o terminan el proceso, forzando un cambio de contexto. fork crea un proceso, pero el padre puede seguir ejecutándose inmediatamente sin ceder la CPU.",
-            "is_ai_deduced": true,
-            "source_file": "PEP1-SISTOPE-2024-1.pdf"
+            "correct": "d",
+            "source": "PEP1-SISTOPE-2024-1.pdf",
+            "ai_deduced": true
         },
         {
             "subject": "Sistemas Operativos",
@@ -634,10 +634,10 @@
                     "value": "Cuando llega un proceso nuevo cuyo tiempo de servicio es menor que el tiempo restante del proceso actual"
                 }
             ],
-            "correct_option": "d",
             "explanation": "SRT es la versión apropiativa de SPN/SJF. Si llega un proceso más corto que lo que le falta al actual, el sistema cambia al nuevo proceso.",
-            "is_ai_deduced": true,
-            "source_file": "PEP1-SISTOPE-2024-1.pdf"
+            "correct": "d",
+            "source": "PEP1-SISTOPE-2024-1.pdf",
+            "ai_deduced": true
         },
         {
             "subject": "Sistemas Operativos",
@@ -660,10 +660,10 @@
                     "value": "Las variables locales no se almacenan en el stack"
                 }
             ],
-            "correct_option": "a",
             "explanation": "Las variables locales (`int a`, `int i`) se almacenan en el User Stack. En la iteración i=1, el padre incrementa 'a' a 1 y luego lo decrementa a 0 antes del fork/print.",
-            "is_ai_deduced": true,
-            "source_file": "PEP1-SISTOPE-2024-1.pdf"
+            "correct": "a",
+            "source": "PEP1-SISTOPE-2024-1.pdf",
+            "ai_deduced": true
         },
         {
             "subject": "Sistemas Operativos",
@@ -686,10 +686,10 @@
                     "value": "No es necesario un kernel stack"
                 }
             ],
-            "correct_option": "b",
             "explanation": "Fork crea copias separadas de memoria (no compartida por defecto). Si el código no usa asignación dinámica (malloc), el segmento Heap permanece vacío o mínimo.",
-            "is_ai_deduced": true,
-            "source_file": "PEP1-SISTOPE-2024-1.pdf"
+            "correct": "b",
+            "source": "PEP1-SISTOPE-2024-1.pdf",
+            "ai_deduced": true
         },
         {
             "subject": "Sistemas Operativos",
@@ -712,10 +712,10 @@
                     "value": "RR Virtual asigna un quantum mayor si el proceso fue desalojado"
                 }
             ],
-            "correct_option": "a",
             "explanation": "RR Virtual mejora el rendimiento de procesos I/O bound colocándolos en una cola auxiliar preferente cuando terminan su I/O, en lugar de al final de la cola principal.",
-            "is_ai_deduced": true,
-            "source_file": "PEP1-SISTOPE-2024-1.pdf"
+            "correct": "a",
+            "source": "PEP1-SISTOPE-2024-1.pdf",
+            "ai_deduced": true
         },
         {
             "subject": "Sistemas Operativos",
@@ -738,10 +738,10 @@
                     "value": "Nunca pueden ser iguales"
                 }
             ],
-            "correct_option": "b",
             "explanation": "Si los procesos llegan en orden creciente de duración (el más corto primero), FCFS los ejecuta en el mismo orden que SPN (Shortest Process Next), resultando en las mismas métricas.",
-            "is_ai_deduced": true,
-            "source_file": "PEP1-SISTOPE-2024-1.pdf"
+            "correct": "b",
+            "source": "PEP1-SISTOPE-2024-1.pdf",
+            "ai_deduced": true
         },
         {
             "subject": "Sistemas Operativos",
@@ -764,10 +764,10 @@
                     "value": "HRRN"
                 }
             ],
-            "correct_option": "c",
             "explanation": "SRT (Shortest Remaining Time) y SPN prefieren procesos cortos. Si llegan continuamente procesos cortos, los procesos largos nunca obtendrán la CPU (inanición). HRRN envejece los procesos para evitar esto.",
-            "is_ai_deduced": true,
-            "source_file": "PEP1-SISTOPE-2024-1.pdf"
+            "correct": "c",
+            "source": "PEP1-SISTOPE-2024-1.pdf",
+            "ai_deduced": true
         },
         {
             "subject": "Sistemas Operativos",
@@ -790,10 +790,10 @@
                     "value": "RR nunca es desalojado por procesos de mayor prioridad"
                 }
             ],
-            "correct_option": "b",
             "explanation": "Ambas son políticas de tiempo real. La diferencia es que SCHED_FIFO continúa ejecutándose indefinidamente hasta que cede la CPU o se bloquea, mientras que SCHED_RR aplica un quantum (time slice).",
-            "is_ai_deduced": true,
-            "source_file": "PEP1-SISTOPE-2024-2.pdf"
+            "correct": "b",
+            "source": "PEP1-SISTOPE-2024-2.pdf",
+            "ai_deduced": true
         },
         {
             "subject": "Sistemas Operativos",
@@ -816,10 +816,10 @@
                     "value": "0.5 s"
                 }
             ],
-            "correct_option": "b",
             "explanation": "Quantum = 50 ticks * 2 ms/tick = 100 ms. 100 ms = 0.1 segundos.",
-            "is_ai_deduced": true,
-            "source_file": "PEP1-SISTOPE-2023-2.pdf"
+            "correct": "b",
+            "source": "PEP1-SISTOPE-2023-2.pdf",
+            "ai_deduced": true
         },
         {
             "subject": "Sistemas Operativos",
@@ -842,10 +842,10 @@
                     "value": "El Kernel Stack no existe"
                 }
             ],
-            "correct_option": "c",
             "explanation": "La optimización de llamadas de cola afecta al User Stack (reutilizando frames de función). El Kernel Stack solo se usa para manejo de syscalls/interrupciones, por lo que cambios en la lógica interna del código de usuario no lo afectan directamente.",
-            "is_ai_deduced": true,
-            "source_file": "PEP1-SISTOPE-2023-2.pdf"
+            "correct": "c",
+            "source": "PEP1-SISTOPE-2023-2.pdf",
+            "ai_deduced": true
         },
         {
             "subject": "Sistemas Operativos",
@@ -868,10 +868,10 @@
                     "value": "Se genera un error de segmentación"
                 }
             ],
-            "correct_option": "b",
             "explanation": "FCFS es no apropiativo. Si un proceso entra en un bucle infinito de CPU y no hace llamadas bloqueantes, nunca soltará el procesador, bloqueando a todos los demás.",
-            "is_ai_deduced": true,
-            "source_file": "PEP1-SISTOPE-2025-1.pdf"
+            "correct": "b",
+            "source": "PEP1-SISTOPE-2025-1.pdf",
+            "ai_deduced": true
         },
         {
             "subject": "Sistemas Operativos",
@@ -894,10 +894,10 @@
                     "value": "12"
                 }
             ],
-            "correct_option": "b",
             "explanation": "El primer bucle (N=2) genera 3 procesos (P, C1, C2). El segundo bucle (A-1=1) se ejecuta una vez para cada uno de los 3 procesos existentes, creando 1 hijo cada uno. Total = 3 + 3 = 6 procesos.",
-            "is_ai_deduced": true,
-            "source_file": "PEP1-SISTOPE-2025-1.pdf"
+            "correct": "b",
+            "source": "PEP1-SISTOPE-2025-1.pdf",
+            "ai_deduced": true
         },
         {
             "subject": "Sistemas Operativos",
@@ -920,10 +920,10 @@
                     "value": "14"
                 }
             ],
-            "correct_option": "c",
             "explanation": "Fórmula: Tau_nuevo = alpha * T_real + (1-alpha) * Tau_ant. Tau = 0.5 * 8 + 0.5 * 16 = 4 + 8 = 12.",
-            "is_ai_deduced": true,
-            "source_file": "PEP1-SISTOPE-2025-1.pdf"
+            "correct": "c",
+            "source": "PEP1-SISTOPE-2025-1.pdf",
+            "ai_deduced": true
         },
         {
             "subject": "Sistemas Operativos",
@@ -946,10 +946,10 @@
                     "value": "Stack, Heap, Code"
                 }
             ],
-            "correct_option": "b",
             "explanation": "Las direcciones bajas (0x5...) suelen corresponder a Código (Texto) y Heap. Las direcciones altas (0x7...) corresponden al Stack. La dirección de 'main' es Código, el valor de 'p' (malloc) es Heap, y la dirección de la variable local '&p' es Stack.",
-            "is_ai_deduced": true,
-            "source_file": "PEP1-SISTOPE-2024-2.pdf"
+            "correct": "b",
+            "source": "PEP1-SISTOPE-2024-2.pdf",
+            "ai_deduced": true
         },
         {
             "subject": "Sistemas Operativos",
@@ -972,10 +972,10 @@
                     "value": "U tiende a 0"
                 }
             ],
-            "correct_option": "a",
             "explanation": "Si el quantum es suficientemente grande para que el proceso termine su ráfaga T sin ser interrumpido, el ciclo es: Ejecución (T) + Overhead I/O (E) + Switch (S). La utilización es la parte útil (T) sobre el total.",
-            "is_ai_deduced": true,
-            "source_file": "PEP1-SISTOPE-2023-2.pdf"
+            "correct": "a",
+            "source": "PEP1-SISTOPE-2023-2.pdf",
+            "ai_deduced": true
         },
         {
             "subject": "Sistemas Operativos",
@@ -998,10 +998,10 @@
                     "value": "HRRN"
                 }
             ],
-            "correct_option": "b",
             "explanation": "Si todos tienen el número sorteado, el desempate es 'el que más tiempo ha estado esperando' (FIFO). Como tienen quantum, esto resulta en un comportamiento Round Robin (RR).",
-            "is_ai_deduced": true,
-            "source_file": "PEP1-SISTOPE-2024-1.pdf"
+            "correct": "b",
+            "source": "PEP1-SISTOPE-2024-1.pdf",
+            "ai_deduced": true
         },
         {
             "subject": "Sistemas Operativos",
@@ -1024,10 +1024,10 @@
                     "value": "Se comporta como FCFS"
                 }
             ],
-            "correct_option": "b",
             "explanation": "Los algoritmos probabilísticos requieren la Ley de los Grandes Números (muchos sorteos) para converger. Con procesos cortos hay pocos sorteos, por lo que la asignación de CPU puede desviarse significativamente de la distribución de tickets.",
-            "is_ai_deduced": true,
-            "source_file": "Pep1_2-2022-global.pdf"
+            "correct": "b",
+            "source": "Pep1_2-2022-global.pdf",
+            "ai_deduced": true
         },
         {
             "subject": "Sistemas Operativos",
@@ -1050,10 +1050,10 @@
                     "value": "9"
                 }
             ],
-            "correct_option": "b",
             "explanation": "El padre crea 2 hijos en el bucle interno. Los hijos rompen el bucle interno. En la verificación final, solo el padre cumple `npid==pid` y rompe el externo. Los hijos continúan pero el bucle externo termina inmediatamente por la condición `i<1`. Total: Padre + 2 Hijos = 3 procesos.",
-            "is_ai_deduced": true,
-            "source_file": "PEP1-SISTOPE-2023-2.pdf"
+            "correct": "b",
+            "source": "PEP1-SISTOPE-2023-2.pdf",
+            "ai_deduced": true
         },
         {
             "subject": "Sistemas Operativos",
@@ -1076,10 +1076,10 @@
                     "value": "10"
                 }
             ],
-            "correct_option": "c",
             "explanation": "Ejecución: P3(1) -> P2(1) -> P1(1)[fin P1] -> P3(1) -> P2(1)[fin P2] -> P3(1)[fin P3]. P3 termina en el instante 6.",
-            "is_ai_deduced": true,
-            "source_file": "PEP1-SISTOPE-2024-1.pdf"
+            "correct": "c",
+            "source": "PEP1-SISTOPE-2024-1.pdf",
+            "ai_deduced": true
         }
     ]
 }
