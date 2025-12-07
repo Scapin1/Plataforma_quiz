@@ -17,7 +17,14 @@ function MainMenu({ questions, onStart }) {
 
   // Extract unique subjects and sources
   const subjects = useMemo(() => [...new Set(questions.map(q => q.subject).filter(Boolean))], [questions]);
-  const sources = useMemo(() => [...new Set(questions.map(q => q.source).filter(Boolean))], [questions]);
+  
+  // Get sources based on selected subject (only same subject) or all sources (general mode)
+  const sources = useMemo(() => {
+    if (selectedSubject) {
+      return [...new Set(questions.filter(q => q.subject === selectedSubject).map(q => q.source).filter(Boolean))];
+    }
+    return [...new Set(questions.map(q => q.source).filter(Boolean))];
+  }, [questions, selectedSubject]);
 
   // Calculate available questions based on selection
   const availableCount = useMemo(() => {
