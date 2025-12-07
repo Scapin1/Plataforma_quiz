@@ -64,7 +64,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <CenteredLayout align={isQuiz ? 'right' : 'center'}>
-        <header style={{ marginBottom: '2rem', textAlign: isQuiz ? 'right' : 'center', width: '100%' }}>
+        <header style={{ marginBottom: '2rem', textAlign: 'center', width: '100%' }}>
           <GradientText variant="h2" component="h1">
             PLATAFORMA DE ESTUDIO
           </GradientText>

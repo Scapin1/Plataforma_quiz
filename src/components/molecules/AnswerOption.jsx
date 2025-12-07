@@ -4,8 +4,10 @@ import HexagonBox from '../atoms/HexagonBox';
 
 const StyledButtonBase = styled(ButtonBase)(({ theme }) => ({
     width: '100%',
-    height: '80px', // Fixed height for consistency
+    minHeight: '80px', // Allow growth for long text
+    height: 'auto',    // Adaptive height
     position: 'relative',
+    padding: '4px',    // Ensure spacing from other elements if grid gap isn't enough
     transition: 'transform 0.1s',
     '&:active': {
         transform: 'scale(0.98)',
@@ -50,7 +52,7 @@ const AnswerOption = ({ label, text, state, onClick, disabled }) => {
                     transform: state === 'selected' ? 'scale(1.02)' : 'scale(1)',
                 }}
             >
-                <div className="content" style={{ display: 'flex', alignItems: 'center', padding: '0 2rem' }}>
+                <div className="content" style={{ display: 'flex', alignItems: 'center', padding: '1rem 2rem', minHeight: '100%' }}>
                     <Typography variant="h5" sx={{ fontWeight: 900, color: state === 'selected' ? '#fff' : 'rgba(255,255,255,0.3)', mr: 2, minWidth: '30px' }}>
                         {state === 'selected' ? '●' : label}
                     </Typography>
