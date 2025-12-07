@@ -1,0 +1,227 @@
+{
+    "id": "sistemas_operativos",
+    "name": "Sistemas Operativos",
+    "icon": "Computer",
+    "questions": [
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Sólo en sistemas multicore puede ocurrir concurrencia.",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Verdadero"
+                },
+                {
+                    "key": "b",
+                    "value": "Falso"
+                }
+            ],
+            "correct": "b",
+            "explanation": "La concurrencia es un concepto lógico que puede lograrse en sistemas de un solo núcleo mediante la multiprogramación y el entrelazado (interleaving) de procesos, no requiere estrictamente hardware multicore.",
+            "ai_deduced": true,
+            "source": "Pep1_2-2022-global.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "En los sistemas computacionales que no implementan el mecanismo de interrupciones puede ocurrir concurrencia.",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Verdadero"
+                },
+                {
+                    "key": "b",
+                    "value": "Falso"
+                }
+            ],
+            "correct": "b",
+            "explanation": "El mecanismo de interrupciones (especialmente las de reloj/timer) es fundamental para permitir que el sistema operativo retome el control y realice la conmutación de procesos necesaria para la concurrencia (multitarea). Sin ellas, la ejecución tiende a ser secuencial o por lotes.",
+            "ai_deduced": true,
+            "source": "Pep1_2-2022-global.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Cuando se invoca al syscall fork(), el nuevo proceso (hijo) creado comparte la memoria de su imagen/layout con el proceso padre.",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Verdadero"
+                },
+                {
+                    "key": "b",
+                    "value": "Falso"
+                }
+            ],
+            "correct": "b",
+            "explanation": "La llamada al sistema `fork()` crea un nuevo proceso con un espacio de direcciones propio y separado. Aunque inicialmente sea una copia exacta (y se usen optimizaciones como Copy-On-Write), no comparten la misma memoria física para escrituras como lo harían los hilos (threads).",
+            "ai_deduced": true,
+            "source": "Pep1_2-2022-global.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Cada tipo de interrupción se identifica a través de un número único para invocar a su respectivo interruption handler a través de la exception table.",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Verdadero"
+                },
+                {
+                    "key": "b",
+                    "value": "Falso"
+                }
+            ],
+            "correct": "a",
+            "explanation": "Las interrupciones son gestionadas mediante una tabla de vectores de interrupción (IVT o IDT), donde cada tipo de evento tiene asociado un número índice único que apunta a la rutina de servicio (handler) correspondiente.",
+            "ai_deduced": true,
+            "source": "Pep1_2-2022-global.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "La tabla de descriptores para un proceso contiene sólo los descriptores para los pipes.",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Verdadero"
+                },
+                {
+                    "key": "b",
+                    "value": "Falso"
+                }
+            ],
+            "correct": "b",
+            "explanation": "La tabla de descriptores de archivo (File Descriptor Table) almacena referencias a todos los flujos de entrada/salida abiertos por el proceso, incluyendo archivos regulares, sockets, pipes y dispositivos (stdin, stdout, stderr).",
+            "ai_deduced": true,
+            "source": "Pep1_2-2022-global.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Considere un SO con reloj de sistema HZ=10 y un quantum de 300 ms. Si en cada tick el SO consume 1 ms en tareas administrativas (descontándolo del proceso), ¿cuánto tiempo de CPU efectivo utiliza realmente un proceso en un ciclo completo?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "300 ms"
+                },
+                {
+                    "key": "b",
+                    "value": "297 ms"
+                },
+                {
+                    "key": "c",
+                    "value": "290 ms"
+                },
+                {
+                    "key": "d",
+                    "value": "270 ms"
+                }
+            ],
+            "correct": "b",
+            "explanation": "Con HZ=10, 1 tick equivale a 100ms. Un quantum de 300ms corresponde a 3 ticks. Si el SO gasta 1ms por tick, el overhead total es 3 * 1ms = 3ms. Tiempo efectivo = 300ms - 3ms = 297ms[cite: 1048, 1050, 1053].",
+            "ai_deduced": true,
+            "source": "PEP1_1-2023-global.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "En un sistema con planificación HRRN (Highest Response Ratio Next), P1 llega en t=1 (servicio=4) y P2 llega en t=4. ¿Cuál debe ser el tiempo de servicio de P2 para que sea elegido antes que P1 en el instante t=7?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Mayor a 3 segundos"
+                },
+                {
+                    "key": "b",
+                    "value": "Exactamente 2.5 segundos"
+                },
+                {
+                    "key": "c",
+                    "value": "Menor a 2 segundos"
+                },
+                {
+                    "key": "d",
+                    "value": "HRRN no permite priorizar P2"
+                }
+            ],
+            "correct": "c",
+            "explanation": "Calculamos la Tasa de Respuesta (R = (w+s)/s). En t=7, P1 esperó 6s (R1 = (6+4)/4 = 2.5). P2 esperó 3s (R2 = (3+x)/x). [cite_start]Para que R2 > R1, (3+x)/x > 2.5, lo que implica que x (tiempo de servicio) debe ser menor a 2[cite: 1055, 1057].",
+            "ai_deduced": true,
+            "source": "PEP1_1-2023-global.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "¿Cómo afecta la optimización de compilador 'Inline Optimization' a los segmentos de memoria de un proceso?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Reduce el segmento CODE y aumenta el segmento STACK"
+                },
+                {
+                    "key": "b",
+                    "value": "Aumenta el segmento CODE y reduce el uso del segmento STACK"
+                },
+                {
+                    "key": "c",
+                    "value": "No tiene efecto en la estructura de memoria virtual"
+                },
+                {
+                    "key": "d",
+                    "value": "Elimina completamente el segmento STACK"
+                }
+            ],
+            "correct": "b",
+            "explanation": "La optimización Inline reemplaza la llamada a una función por el cuerpo completo de la misma. [cite_start]Esto elimina la necesidad de crear 'stack frames' (ahorrando memoria de STACK), pero al copiar el código en cada llamada, aumenta el tamaño del binario (segmento CODE)[cite: 1068, 1073].",
+            "ai_deduced": true,
+            "source": "PEP1_1-2023-global.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "En un planificador de tipo 'Lottery Scheduler', ¿qué escenario dificulta más que se cumpla la proporción de tiempo de CPU deseada (fairness)?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Cuando los procesos tienen tiempos de ejecución muy cortos"
+                },
+                {
+                    "key": "b",
+                    "value": "Cuando el número de tickets es muy alto"
+                },
+                {
+                    "key": "c",
+                    "value": "Cuando los procesos son intensivos en CPU (largos)"
+                },
+                {
+                    "key": "d",
+                    "value": "Cuando se usa una distribución uniforme de aleatoriedad"
+                }
+            ],
+            "correct": "a",
+            "explanation": "Los algoritmos probabilísticos como Lottery Scheduling dependen de la Ley de los Grandes Números para converger a la proporción asignada. [cite_start]Si los procesos son cortos, hay pocos sorteos, lo que aumenta la varianza y reduce la precisión de la asignación[cite: 1247].",
+            "ai_deduced": true,
+            "source": "Pep1_2-2022-global.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "¿Qué efecto tiene la optimización 'Tail Call Optimization' en funciones recursivas?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Convierte la recursión en un ciclo iterativo, evitando el desbordamiento de pila (stack overflow)"
+                },
+                {
+                    "key": "b",
+                    "value": "Duplica el código de la función para hacerlo más rápido"
+                },
+                {
+                    "key": "c",
+                    "value": "Aumenta el uso del segmento de datos para guardar variables"
+                },
+                {
+                    "key": "d",
+                    "value": "Permite que el hijo comparta la memoria del padre"
+                }
+            ],
+            "correct": "a",
+            "explanation": "El compilador detecta cuando la última acción de una función es llamarse a sí misma y lo transforma en un bucle (while), reutilizando el mismo stack frame en lugar de crear uno nuevo infinitamente[cite: 1061, 1067].",
+            "ai_deduced": true,
+            "source": "PEP1_1-2023-global.pdf"
+        }
+    ]
+}

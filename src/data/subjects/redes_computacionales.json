@@ -1,0 +1,1959 @@
+{
+    "id": "redes_computacionales",
+    "name": "Redes Computacionales",
+    "icon": "NetworkCheck",
+    "questions": [
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cuál es la diferencia principal entre los modelos OSI y TCP/IP?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "OSI es más antiguo que TCP/IP"
+                },
+                {
+                    "key": "b",
+                    "value": "OSI es teórico, TCP/IP es práctico"
+                },
+                {
+                    "key": "c",
+                    "value": "OSI tiene 4 capas, TCP/IP tiene 7"
+                },
+                {
+                    "key": "d",
+                    "value": "Ambos modelos son idénticos en estructura"
+                }
+            ],
+            "correct": "b",
+            "explanation": "El modelo OSI es un modelo de referencia teórico y descriptivo creado para entender las comunicaciones, mientras que TCP/IP es un conjunto de protocolos operativos implementados en la práctica para Internet.",
+            "ai_deduced": true,
+            "source": "PEP 1 - Redes 2025-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Qué protocolo usa típicamente UDP para consultas rápidas y TCP para transferencias más extensas?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "HTTP"
+                },
+                {
+                    "key": "b",
+                    "value": "FTP"
+                },
+                {
+                    "key": "c",
+                    "value": "DNS"
+                },
+                {
+                    "key": "d",
+                    "value": "SSH"
+                }
+            ],
+            "correct": "c",
+            "explanation": "DNS utiliza UDP (puerto 53) para consultas estándar rápidas debido a su baja sobrecarga, pero cambia a TCP (puerto 53) para transferencias de zona o respuestas que exceden el tamaño de un datagrama UDP.",
+            "ai_deduced": true,
+            "source": "PEP 1 - Redes 2025-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "En una arquitectura cliente-servidor, ¿quién inicia la comunicación?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "El servidor"
+                },
+                {
+                    "key": "b",
+                    "value": "El cliente"
+                },
+                {
+                    "key": "c",
+                    "value": "Ambos simultáneamente"
+                },
+                {
+                    "key": "d",
+                    "value": "Depende del protocolo"
+                }
+            ],
+            "correct": "b",
+            "explanation": "En el modelo cliente-servidor, el servidor permanece en escucha (estado pasivo) esperando solicitudes, y es siempre el cliente quien inicia activamente la solicitud de conexión o servicio.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2025-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cuál protocolo de transporte está orientado a la conexión?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "UDP"
+                },
+                {
+                    "key": "b",
+                    "value": "ICMP"
+                },
+                {
+                    "key": "c",
+                    "value": "ARP"
+                },
+                {
+                    "key": "d",
+                    "value": "TCP"
+                }
+            ],
+            "correct": "d",
+            "explanation": "TCP (Transmission Control Protocol) es orientado a la conexión porque establece una sesión (handshake) antes de transmitir datos, garantizando orden y entrega, a diferencia de UDP.",
+            "ai_deduced": true,
+            "source": "PEP 1 - Redes 2025-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Qué capa del modelo OSI realiza la conversión de datos y cifrado?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Capa de sesión"
+                },
+                {
+                    "key": "b",
+                    "value": "Capa de presentación"
+                },
+                {
+                    "key": "c",
+                    "value": "Capa de transporte"
+                },
+                {
+                    "key": "d",
+                    "value": "Capa de aplicación"
+                }
+            ],
+            "correct": "b",
+            "explanation": "La capa de presentación es responsable del formato de los datos, la compresión y el cifrado/descifrado, asegurando que la información sea legible para la capa de aplicación.",
+            "ai_deduced": true,
+            "source": "PEP 1 - Redes 2025-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Qué indica una ventana de 2048 bytes en un segmento TCP?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "El receptor puede aceptar 2048 bytes más sin enviar ACK"
+                },
+                {
+                    "key": "b",
+                    "value": "El emisor debe esperar 2048 segundos"
+                },
+                {
+                    "key": "c",
+                    "value": "El tamaño máximo del paquete es 2048 bytes"
+                },
+                {
+                    "key": "d",
+                    "value": "El número de puerto es 2048"
+                }
+            ],
+            "correct": "a",
+            "explanation": "El campo 'Window' en TCP indica la cantidad de espacio libre en el búfer del receptor, informando al emisor cuántos bytes puede enviar antes de detenerse a esperar un acuse de recibo (ACK).",
+            "ai_deduced": true,
+            "source": "PEP 1 - Redes 2025-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Qué afirmación es verdadera sobre la segmentación en TCP vs UDP?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Ambos garantizan entrega ordenada"
+                },
+                {
+                    "key": "b",
+                    "value": "UDP es más confiable que TCP"
+                },
+                {
+                    "key": "c",
+                    "value": "TCP no realiza segmentación"
+                },
+                {
+                    "key": "d",
+                    "value": "TCP asegura entrega, UDP no"
+                }
+            ],
+            "correct": "d",
+            "explanation": "TCP segmenta el flujo de datos y garantiza su reensamblaje y entrega confiable mediante ACKs. UDP envía datagramas de 'mejor esfuerzo' sin garantizar que lleguen ni el orden.",
+            "ai_deduced": true,
+            "source": "PEP 1 - Redes 2025-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Qué número de ACK debe enviar un cliente para finalizar el three-way handshake si recibe un ISN 2000 del servidor?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "1999"
+                },
+                {
+                    "key": "b",
+                    "value": "2000"
+                },
+                {
+                    "key": "c",
+                    "value": "2002"
+                },
+                {
+                    "key": "d",
+                    "value": "2001"
+                }
+            ],
+            "correct": "d",
+            "explanation": "En el handshake TCP, el ACK siempre es el número de secuencia recibido + 1. Si el servidor envía SYN con SEQ=2000, el cliente confirma con ACK=2001.",
+            "ai_deduced": true,
+            "source": "PEP 1 - Redes 2025-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cuál afirmación es correcta sobre HTTP, HTTPS y DNS?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "HTTP cifra los datos"
+                },
+                {
+                    "key": "b",
+                    "value": "HTTPS usa el puerto 80"
+                },
+                {
+                    "key": "c",
+                    "value": "DNS puede usar TCP y UDP"
+                },
+                {
+                    "key": "d",
+                    "value": "DNS solo utiliza TCP"
+                }
+            ],
+            "correct": "c",
+            "explanation": "HTTP no cifra (texto plano), HTTPS usa el puerto 443 (no 80), pero DNS es versátil: usa UDP para consultas estándar y TCP para transferencias de zona o respuestas grandes.",
+            "ai_deduced": true,
+            "source": "PEP 1 - Redes 2025-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Qué pieza necesita un atacante para secuestrar una sesión TCP?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Dirección MAC del router"
+                },
+                {
+                    "key": "b",
+                    "value": "Puerto del servidor"
+                },
+                {
+                    "key": "c",
+                    "value": "Tiempo de vida (TTL)"
+                },
+                {
+                    "key": "d",
+                    "value": "Números de secuencia y ACK actuales"
+                }
+            ],
+            "correct": "d",
+            "explanation": "Para realizar un TCP Session Hijacking, el atacante debe conocer (o predecir) los números de secuencia y ACK actuales para inyectar paquetes maliciosos que la víctima acepte como legítimos.",
+            "ai_deduced": true,
+            "source": "PEP 1 - Redes 2025-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cuál es la principal diferencia entre los modelos OSI y TCP/IP?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "TCP/IP no tiene una capa de transporte."
+                },
+                {
+                    "key": "b",
+                    "value": "OSI se basa en la conmutación de paquetes, mientras que TCP/IP se basa en la conmutación de circuitos."
+                },
+                {
+                    "key": "c",
+                    "value": "OSI es un modelo teórico y descriptivo, mientras que TCP/IP es un conjunto de protocolos operativos."
+                },
+                {
+                    "key": "d",
+                    "value": "No hay ninguna diferencia entre ambos modelos."
+                },
+                {
+                    "key": "e",
+                    "value": "TCP/IP es el modelo más antiguo de los dos."
+                }
+            ],
+            "correct": "c",
+            "explanation": "El modelo OSI es una descripción teórica y un marco de referencia para comprender cómo interactúan los protocolos, mientras que TCP/IP es el conjunto práctico de protocolos que realmente hace funcionar Internet.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cuál de las siguientes afirmaciones describe correctamente una red de área local (LAN)?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Conecta redes en ciudades y países diferentes."
+                },
+                {
+                    "key": "b",
+                    "value": "Su alcance está limitado a un área geográfica pequeña, como un edificio o un campus universitario."
+                },
+                {
+                    "key": "c",
+                    "value": "Suele tener un alcance de decenas o incluso cientos de kilómetros."
+                },
+                {
+                    "key": "d",
+                    "value": "Es utilizada principalmente para interconectar redes de diferentes países."
+                },
+                {
+                    "key": "e",
+                    "value": "Se utiliza para conectar computadoras en la misma habitación."
+                }
+            ],
+            "correct": "b",
+            "explanation": "Una LAN (Local Area Network) se caracteriza por conectar dispositivos dentro de un área geográfica limitada, como una casa, oficina o edificio.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cuál es la tarea principal de la capa de enlace de datos en el modelo OSI?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Asegura la entrega confiable de los paquetes."
+                },
+                {
+                    "key": "b",
+                    "value": "Proporciona servicios de enrutamiento."
+                },
+                {
+                    "key": "c",
+                    "value": "Administra la comunicación entre los componentes de hardware y software en un sistema."
+                },
+                {
+                    "key": "d",
+                    "value": "Proporciona los medios para el intercambio de datos entre sistemas de red."
+                },
+                {
+                    "key": "e",
+                    "value": "Define la interfaz física para la transmisión de datos."
+                }
+            ],
+            "correct": "d",
+            "explanation": "La capa de enlace de datos se encarga de la transmisión de datos (tramas) entre dispositivos de la misma red, control de flujo y detección de errores a nivel de enlace.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cómo se define una topología de estrella en una red?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Todos los nodos están conectados en un círculo, y los datos fluyen en un solo sentido."
+                },
+                {
+                    "key": "b",
+                    "value": "Cada nodo está conectado a todos los demás nodos."
+                },
+                {
+                    "key": "c",
+                    "value": "Todos los nodos están conectados a un nodo central o hub."
+                },
+                {
+                    "key": "d",
+                    "value": "Los nodos están conectados en una línea, y los datos pueden fluir en ambas direcciones."
+                },
+                {
+                    "key": "e",
+                    "value": "Cada nodo está conectado a dos nodos adyacentes, formando un anillo."
+                }
+            ],
+            "correct": "c",
+            "explanation": "En la topología de estrella, todos los dispositivos se conectan a un punto central (como un switch o hub) que gestiona y distribuye la comunicación.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "En el modelo de referencia OSI, ¿qué capa es responsable de la traducción de datos, el cifrado y la compresión de datos?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Capa de presentación."
+                },
+                {
+                    "key": "b",
+                    "value": "Capa de transporte."
+                },
+                {
+                    "key": "c",
+                    "value": "Capa de sesión."
+                },
+                {
+                    "key": "d",
+                    "value": "Capa de enlace de datos."
+                },
+                {
+                    "key": "e",
+                    "value": "Capa de aplicación."
+                }
+            ],
+            "correct": "a",
+            "explanation": "La capa de presentación asegura que la información enviada por la capa de aplicación de un sistema pueda ser leída por la capa de aplicación de otro, manejando sintaxis, cifrado y compresión.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Qué protocolo del modelo TCP/IP es responsable de la entrega confiable de datos?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "IP"
+                },
+                {
+                    "key": "b",
+                    "value": "UDP"
+                },
+                {
+                    "key": "c",
+                    "value": "ICMP"
+                },
+                {
+                    "key": "d",
+                    "value": "TCP"
+                },
+                {
+                    "key": "e",
+                    "value": "HTTP"
+                }
+            ],
+            "correct": "d",
+            "explanation": "TCP garantiza la entrega confiable mediante el uso de acuses de recibo (ACKs), retransmisión de paquetes perdidos y secuenciación.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cuál de las siguientes es una ventaja de la topología de malla en una red de computadoras?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Es la más barata de implementar."
+                },
+                {
+                    "key": "b",
+                    "value": "Si falla un nodo, toda la red se cae."
+                },
+                {
+                    "key": "c",
+                    "value": "Cada nodo tiene una conexión directa con todos los demás nodos."
+                },
+                {
+                    "key": "d",
+                    "value": "La información solo puede viajar en una dirección."
+                },
+                {
+                    "key": "e",
+                    "value": "Necesita menos cable que otras topologías."
+                }
+            ],
+            "correct": "c",
+            "explanation": "En una malla completa, cada nodo se conecta con todos los demás, lo que proporciona redundancia y múltiples caminos, mejorando la fiabilidad (aunque es costosa).",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Qué capa del modelo OSI maneja la conexión, el mantenimiento y el cierre de sesiones?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Capa de presentación."
+                },
+                {
+                    "key": "b",
+                    "value": "Capa de sesión."
+                },
+                {
+                    "key": "c",
+                    "value": "Capa de transporte."
+                },
+                {
+                    "key": "d",
+                    "value": "Capa de red."
+                },
+                {
+                    "key": "e",
+                    "value": "Capa de enlace de datos."
+                }
+            ],
+            "correct": "b",
+            "explanation": "La capa de sesión establece, administra y finaliza las sesiones de comunicación entre aplicaciones en diferentes dispositivos.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cuál de las siguientes es una característica del protocolo IP en el modelo TCP/IP?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Garantiza la entrega de paquetes."
+                },
+                {
+                    "key": "b",
+                    "value": "Ofrece servicio de transmisión de datos sin conexión."
+                },
+                {
+                    "key": "c",
+                    "value": "Proporciona control de flujo."
+                },
+                {
+                    "key": "d",
+                    "value": "Realiza seguimiento de las sesiones de comunicación."
+                },
+                {
+                    "key": "e",
+                    "value": "Proporciona seguridad mediante cifrado."
+                }
+            ],
+            "correct": "b",
+            "explanation": "IP es un protocolo 'sin conexión' (connectionless) y de 'mejor esfuerzo'; no establece un circuito antes de enviar datos ni garantiza su llegada.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Qué capa del modelo TCP/IP es equivalente a la combinación de la capa de sesión, presentación y aplicación del modelo OSI?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Capa de red."
+                },
+                {
+                    "key": "b",
+                    "value": "Capa de transporte."
+                },
+                {
+                    "key": "c",
+                    "value": "Capa de enlace de datos."
+                },
+                {
+                    "key": "d",
+                    "value": "Capa de internet."
+                },
+                {
+                    "key": "e",
+                    "value": "Capa de aplicación."
+                }
+            ],
+            "correct": "e",
+            "explanation": "La capa de Aplicación en TCP/IP es más amplia y engloba las funciones que en OSI están divididas en Aplicación, Presentación y Sesión.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Qué herramientas de software o comandos podrías utilizar para investigar los problemas de velocidad de conexión que los usuarios están experimentando?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Solamente ping."
+                },
+                {
+                    "key": "b",
+                    "value": "Solamente traceroute."
+                },
+                {
+                    "key": "c",
+                    "value": "Solamente Wireshark."
+                },
+                {
+                    "key": "d",
+                    "value": "Combinación de ping, traceroute y Wireshark."
+                },
+                {
+                    "key": "e",
+                    "value": "Ninguna de las anteriores."
+                }
+            ],
+            "correct": "d",
+            "explanation": "Para un diagnóstico completo se requiere ping (latencia/conectividad), traceroute (ruta/saltos) y Wireshark (análisis profundo de paquetes).",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cómo podría afectar a la red si el bit de 'acuse de recibo' en el encabezado TCP está configurado incorrectamente?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "No afecta la red."
+                },
+                {
+                    "key": "b",
+                    "value": "Provoca que los paquetes no sean reconocidos correctamente, resultando en retransmisiones innecesarias."
+                },
+                {
+                    "key": "c",
+                    "value": "Mejora la eficiencia de la transmisión de datos."
+                },
+                {
+                    "key": "d",
+                    "value": "Aumenta la velocidad de la conexión."
+                },
+                {
+                    "key": "e",
+                    "value": "Hace más seguro el tráfico de la red."
+                }
+            ],
+            "correct": "b",
+            "explanation": "Si los ACKs fallan o están mal configurados, el emisor creerá que los datos no llegaron y los reenviará, causando tráfico duplicado y reduciendo la eficiencia.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "Si tienes un paquete de datos y quieres determinar a qué capa del modelo OSI corresponde, ¿qué parte del paquete deberías examinar?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "La carga útil del paquete"
+                },
+                {
+                    "key": "b",
+                    "value": "El encabezado de nivel de aplicación"
+                },
+                {
+                    "key": "c",
+                    "value": "Los encabezados de nivel de transporte y red"
+                },
+                {
+                    "key": "d",
+                    "value": "Los datos del encabezado de la capa de enlace de datos"
+                },
+                {
+                    "key": "e",
+                    "value": "Todas las anteriores"
+                }
+            ],
+            "correct": "e",
+            "explanation": "Cada capa añade su propio encabezado (encapsulación). Para entender el paquete completo y su contexto en OSI, se debe poder analizar la información de encabezado de todas las capas presentes.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Qué protocolo debería estar encargado de asignar direcciones IP automáticamente a los servidores?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "DNS"
+                },
+                {
+                    "key": "b",
+                    "value": "HTTP"
+                },
+                {
+                    "key": "c",
+                    "value": "TCP"
+                },
+                {
+                    "key": "d",
+                    "value": "UDP"
+                },
+                {
+                    "key": "e",
+                    "value": "DHCP"
+                }
+            ],
+            "correct": "e",
+            "explanation": "DHCP (Dynamic Host Configuration Protocol) es el estándar para la asignación dinámica y automática de direcciones IP y otros parámetros de red.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Qué podría resultar si los protocolos TCP y UDP están mal configurados en el proceso de encapsulación y desencapsulación?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Pérdida o corrupción de datos, o envío de datos a los destinos incorrectos."
+                },
+                {
+                    "key": "b",
+                    "value": "Mejora en la eficiencia de la transmisión de datos."
+                },
+                {
+                    "key": "c",
+                    "value": "Aumento de la velocidad de la conexión."
+                },
+                {
+                    "key": "d",
+                    "value": "Mayor seguridad en el tráfico de la red."
+                },
+                {
+                    "key": "e",
+                    "value": "Ningún cambio notable."
+                }
+            ],
+            "correct": "a",
+            "explanation": "Errores en la encapsulación/desencapsulación significan que los dispositivos receptores no podrán interpretar correctamente los encabezados o los datos, llevando a pérdida de información.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cuál podría ser la causa del problema de inaccesibilidad a ciertos servicios web internos?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Fallo en el protocolo HTTP HTTPS."
+                },
+                {
+                    "key": "b",
+                    "value": "Problemas con el protocolo DNS."
+                },
+                {
+                    "key": "c",
+                    "value": "Problema con el protocolo SSH."
+                },
+                {
+                    "key": "d",
+                    "value": "Problemas con los protocolos de nivel de aplicación, como DNS, DHCP, HTTP, HTTPS, SSH."
+                },
+                {
+                    "key": "e",
+                    "value": "Falla en el protocolo ICMP."
+                }
+            ],
+            "correct": "d",
+            "explanation": "La inaccesibilidad a servicios web suele estar ligada a la capa de aplicación: si falla DNS no se resuelven nombres, si falla HTTP/HTTPS no carga la web, etc.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cómo confirmarías los hallazgos y soluciones propuestas?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Realizando pruebas de velocidad de red y revisando la configuración de los servidores."
+                },
+                {
+                    "key": "b",
+                    "value": "Monitorizando el tráfico de red para verificar que los paquetes se están enviando y recibiendo correctamente."
+                },
+                {
+                    "key": "c",
+                    "value": "Realizando pruebas en un entorno real, como reconfiguración de los servidores o software que generan los paquetes TCP, revisión de la configuración del servidor DHCP y DNS."
+                },
+                {
+                    "key": "d",
+                    "value": "Ignorando los hallazgos y esperando que el problema se solucione por sí solo."
+                },
+                {
+                    "key": "e",
+                    "value": "Apagando y reiniciando todos los servidores y equipos de red."
+                }
+            ],
+            "correct": "c",
+            "explanation": "La validación requiere pruebas activas en el entorno real y la aplicación de correcciones específicas (configuración de servidores/protocolos) basadas en el diagnóstico previo.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "Imagina que después de solucionar los problemas de configuración de TCP y DNS, la empresa sigue experimentando interrupciones en la conexión a Internet. Luego de investigar, encuentras que el problema ocurre durante las horas pico de tráfico. ¿Qué solución podría ser la más adecuada para resolver este problema?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Reducir la cantidad de usuarios de la red."
+                },
+                {
+                    "key": "b",
+                    "value": "Cambiar el protocolo DNS a otro protocolo de nivel de aplicación."
+                },
+                {
+                    "key": "c",
+                    "value": "Cambiar todos los servidores a servidores DNS."
+                },
+                {
+                    "key": "d",
+                    "value": "Aumentar la capacidad de la red o implementar técnicas de balanceo de carga."
+                },
+                {
+                    "key": "e",
+                    "value": "Cambiar el protocolo TCP por UDP."
+                }
+            ],
+            "correct": "d",
+            "explanation": "Si el problema es congestión en horas pico (cuello de botella), la solución física/lógica es aumentar el ancho de banda o distribuir la carga (balanceo) para que la infraestructura soporte la demanda.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Qué capa del modelo OSI es responsable de garantizar la entrega de paquetes sin errores?",
+            "options": [
+                {
+                    "key": "A",
+                    "value": "Capa de aplicación"
+                },
+                {
+                    "key": "B",
+                    "value": "Capa de presentación"
+                },
+                {
+                    "key": "C",
+                    "value": "Capa de sesión"
+                },
+                {
+                    "key": "D",
+                    "value": "Capa de transporte"
+                },
+                {
+                    "key": "E",
+                    "value": "Capa de red"
+                }
+            ],
+            "correct": "D",
+            "explanation": "La capa de transporte (específicamente con TCP) es responsable de la entrega confiable, control de flujo y corrección de errores de extremo a extremo.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2024-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Qué protocolo de la capa de aplicación es responsable de la resolución de nombres de dominio?",
+            "options": [
+                {
+                    "key": "A",
+                    "value": "HTTP"
+                },
+                {
+                    "key": "B",
+                    "value": "SMTP"
+                },
+                {
+                    "key": "C",
+                    "value": "FTP"
+                },
+                {
+                    "key": "D",
+                    "value": "DNS"
+                },
+                {
+                    "key": "E",
+                    "value": "TCP"
+                }
+            ],
+            "correct": "D",
+            "explanation": "DNS (Domain Name System) traduce nombres de dominio legibles para humanos (ej. https://www.google.com/search?q=google.com) a direcciones IP numéricas.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2024-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cuál es una característica principal del protocolo TCP en comparación con UDP?",
+            "options": [
+                {
+                    "key": "A",
+                    "value": "Transmisión basada en datagramas"
+                },
+                {
+                    "key": "B",
+                    "value": "Operación sin conexión"
+                },
+                {
+                    "key": "C",
+                    "value": "Ausencia de control de flujo"
+                },
+                {
+                    "key": "D",
+                    "value": "Confirmación de segmentos"
+                },
+                {
+                    "key": "E",
+                    "value": "Menor sobrecarga de cabecera"
+                }
+            ],
+            "correct": "D",
+            "explanation": "TCP utiliza confirmaciones (ACKs) para asegurar que cada segmento enviado ha sido recibido correctamente, algo que UDP no hace.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2024-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿En qué capa del modelo OSI operan los routers y switches?",
+            "options": [
+                {
+                    "key": "A",
+                    "value": "Capa física - enlace de datos"
+                },
+                {
+                    "key": "B",
+                    "value": "Capa de enlace de datos - transporte"
+                },
+                {
+                    "key": "C",
+                    "value": "Capa de red - enlace de datos"
+                },
+                {
+                    "key": "D",
+                    "value": "Capa de transporte - aplicación"
+                },
+                {
+                    "key": "E",
+                    "value": "Capa de aplicación - sesión"
+                }
+            ],
+            "correct": "C",
+            "explanation": "Los routers operan en la Capa 3 (Red) usando IPs, y los switches (tradicionales) operan en la Capa 2 (Enlace de datos) usando direcciones MAC.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2024-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "Una empresa necesita garantizar la seguridad de las transmisiones de datos, ¿qué capa del modelo OSI debería enfocarse más en fortalecer?",
+            "options": [
+                {
+                    "key": "A",
+                    "value": "Capa de aplicación"
+                },
+                {
+                    "key": "B",
+                    "value": "Capa de presentación"
+                },
+                {
+                    "key": "C",
+                    "value": "Capa de sesión"
+                },
+                {
+                    "key": "D",
+                    "value": "Capa de transporte"
+                },
+                {
+                    "key": "E",
+                    "value": "Capa de red"
+                }
+            ],
+            "correct": "A",
+            "explanation": "Es en la capa de aplicación donde se implementan muchas políticas de seguridad y cifrado (como HTTPS) antes de que los datos entren a la red.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2024-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cuál de los siguientes no es un mecanismo utilizado en TCP para garantizar la entrega confiable de segmentos?",
+            "options": [
+                {
+                    "key": "A",
+                    "value": "Checksums para error-checking"
+                },
+                {
+                    "key": "B",
+                    "value": "Mensajes de tipo ACK para confirmaciones"
+                },
+                {
+                    "key": "C",
+                    "value": "Numeración de secuencia de paquetes"
+                },
+                {
+                    "key": "D",
+                    "value": "Envío especial de segmentos sin confirmación"
+                },
+                {
+                    "key": "E",
+                    "value": "Control de ventana para manejar el flujo de datos"
+                }
+            ],
+            "correct": "D",
+            "explanation": "TCP no tiene un modo de 'envío sin confirmación'; su naturaleza es confirmar todo. El envío sin confirmación es característico de UDP.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2024-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cuáles de las siguientes afirmaciones son correctas respecto al modelo OSI? i) Define siete capas de comunicación. ii) Incluye una capa específica para el manejo de sesiones. iii) En su capa de enlace de datos define los mecanismos físicos de conexión. iv) Está mayormente implementado en protocolos de Internet actuales.",
+            "options": [
+                {
+                    "key": "A",
+                    "value": "Solo i"
+                },
+                {
+                    "key": "B",
+                    "value": "i y ii"
+                },
+                {
+                    "key": "C",
+                    "value": "i, ii y iii"
+                },
+                {
+                    "key": "D",
+                    "value": "i, iii y iv"
+                },
+                {
+                    "key": "E",
+                    "value": "Todas las anteriores"
+                }
+            ],
+            "correct": "B",
+            "explanation": "OSI tiene 7 capas e incluye la capa de sesión. La afirmación iii es falsa (mecanismos físicos son capa Física) y la iv es falsa (Internet usa TCP/IP, no OSI estrictamente).",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2024-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "Considerando los protocolos de la capa de transporte, seleccione las afirmaciones correctas sobre TCP y UDP. i) TCP es un protocolo orientado a la conexión. ii) UDP garantiza la entrega de datos. iii) TCP utiliza mecanismos de control de congestión. iv) UDP es ideal para aplicaciones que requieren transmisión rápida de datos.",
+            "options": [
+                {
+                    "key": "A",
+                    "value": "Solo i"
+                },
+                {
+                    "key": "B",
+                    "value": "i y iii"
+                },
+                {
+                    "key": "C",
+                    "value": "i, iii y iv"
+                },
+                {
+                    "key": "D",
+                    "value": "Todas las anteriores"
+                },
+                {
+                    "key": "E",
+                    "value": "Ninguna de las anteriores"
+                }
+            ],
+            "correct": "C",
+            "explanation": "TCP es orientado a conexión y controla congestión. UDP es rápido (bueno para streaming/juegos) pero NO garantiza entrega (ii es falsa).",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2024-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "En un entorno de red distribuida, se detecta una alta tasa de errores en las transmisiones. Considerando los modelos OSI y TCP/IP, ¿cuál sería el primer paso para diagnosticar y solucionar este problema?",
+            "options": [
+                {
+                    "key": "A",
+                    "value": "Revisar configuraciones en la capa de transporte."
+                },
+                {
+                    "key": "B",
+                    "value": "Inspeccionar el manejo de sesión en las aplicaciones involucradas."
+                },
+                {
+                    "key": "C",
+                    "value": "Verificar la integridad física y la configuración de los dispositivos de red."
+                },
+                {
+                    "key": "D",
+                    "value": "Ajustar las políticas de seguridad en la capa de aplicación."
+                },
+                {
+                    "key": "E",
+                    "value": "Evaluar la eficiencia de los algoritmos de enrutamiento en uso."
+                }
+            ],
+            "correct": "C",
+            "explanation": "En diagnóstico de redes, se sigue el enfoque 'bottom-up'. Una alta tasa de errores físicos suele indicar problemas de cables, tarjetas o interferencias (Capa 1/2).",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2024-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "Considerando un servicio de VoIP implementado en una red corporativa, ¿qué consideraciones deben tomarse en cuenta para su optimización, dada la estructura del modelo OSI?",
+            "options": [
+                {
+                    "key": "A",
+                    "value": "Asegurar cifrado de extremo a extremo en la capa de presentación."
+                },
+                {
+                    "key": "B",
+                    "value": "Priorizar el tráfico de VoIP."
+                },
+                {
+                    "key": "C",
+                    "value": "Utilizar UDP en lugar de TCP en la capa de transporte para reducir la latencia."
+                },
+                {
+                    "key": "D",
+                    "value": "Optimizar los protocolos de enrutamiento en la capa de red para soportar alta disponibilidad."
+                },
+                {
+                    "key": "E",
+                    "value": "Todas las anteriores."
+                }
+            ],
+            "correct": "E",
+            "explanation": "VoIP requiere un enfoque multicapa: seguridad (cifrado), baja latencia (UDP), calidad de servicio (QoS/Priorización) y alta disponibilidad de red.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2024-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "Una empresa implementará un sistema de videoconferencia en tiempo real. ¿Qué características de los protocolos de red deberían considerarse para optimizar el rendimiento? i) Uso de TCP para garantizar la entrega de datos. ii) Implementación de UDP para reducir la latencia. iii) Aplicación de técnicas de calidad de servicio (QoS) en routers y switches. iv) Priorización de paquetes de datos de video y audio en la capa de red.",
+            "options": [
+                {
+                    "key": "A",
+                    "value": "Solo ii"
+                },
+                {
+                    "key": "B",
+                    "value": "ii y iii"
+                },
+                {
+                    "key": "C",
+                    "value": "ii, iii y iv"
+                },
+                {
+                    "key": "D",
+                    "value": "i, ii y iii"
+                },
+                {
+                    "key": "E",
+                    "value": "Todas las anteriores"
+                }
+            ],
+            "correct": "C",
+            "explanation": "Para video en tiempo real, la latencia es crítica, por lo que se prefiere UDP (ii) y se necesita QoS y priorización (iii, iv). TCP (i) introduce retrasos por retransmisiones inaceptables en vivo.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2024-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "Al diseñar una red segura, ¿qué capas del modelo OSI deben recibir atención especial? i) Capa de aplicación para implementar cifrado de datos. ii) Capa de transporte para asegurar conexiones confiables. iii) Capa de red para gestionar políticas de seguridad y filtrado de tráfico. iv) Capa física para prevenir accesos físicos no autorizados.",
+            "options": [
+                {
+                    "key": "A",
+                    "value": "i, ii y iii"
+                },
+                {
+                    "key": "B",
+                    "value": "i, iii y iv"
+                },
+                {
+                    "key": "C",
+                    "value": "ii, iii y iv"
+                },
+                {
+                    "key": "D",
+                    "value": "Solo i y iii"
+                },
+                {
+                    "key": "E",
+                    "value": "Todas las anteriores"
+                }
+            ],
+            "correct": "E",
+            "explanation": "La seguridad debe ser integral (Defensa en Profundidad), abarcando desde la seguridad física hasta el cifrado en la aplicación y los firewalls en la red.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2024-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "Para garantizar una comunicación segura en una red, ¿qué afirmaciones son correctas sobre la implementación de seguridad en diferentes capas del modelo OSI? i) La capa de aplicación debe implementar protocolos seguros como HTTPS. ii) La capa de sesión puede utilizar TLS para asegurar la comunicación entre procesos. iii) La capa de transporte usa IPsec para proporcionar seguridad en la comunicación. iv) La seguridad en la capa de enlace de datos se logra mediante el cifrado de las tramas transmitidas.",
+            "options": [
+                {
+                    "key": "A",
+                    "value": "i y ii"
+                },
+                {
+                    "key": "B",
+                    "value": "i, ii y iv"
+                },
+                {
+                    "key": "C",
+                    "value": "ii, iii y iv"
+                },
+                {
+                    "key": "D",
+                    "value": "i, iii y iv"
+                },
+                {
+                    "key": "E",
+                    "value": "Todas las anteriores"
+                }
+            ],
+            "correct": "B",
+            "explanation": "La afirmación iii es incorrecta porque IPsec opera en la Capa de Red (Capa 3), no en Transporte. Las demás (HTTPS en app, TLS en sesión, cifrado de tramas en enlace) son correctas.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2024-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cuáles afirmaciones son correctas sobre los protocolos HTTP, HTTPS y DNS? i) HTTP y HTTPS son protocolos que operan en la capa de transporte. ii) HTTPS es una versión segura de HTTP que utiliza TLS para cifrar la comunicación. iii) DNS se utiliza para resolver nombres de dominio en direcciones IP. iv) HTTP utiliza el puerto 80 por defecto, mientras que HTTPS utiliza el puerto 443.",
+            "options": [
+                {
+                    "key": "A",
+                    "value": "Solo iii"
+                },
+                {
+                    "key": "B",
+                    "value": "ii y iii"
+                },
+                {
+                    "key": "C",
+                    "value": "ii, iii y iv"
+                },
+                {
+                    "key": "D",
+                    "value": "i, ii y iv"
+                },
+                {
+                    "key": "E",
+                    "value": "Todas las anteriores"
+                }
+            ],
+            "correct": "C",
+            "explanation": "HTTP y HTTPS operan en la Capa de Aplicación, no en Transporte (i es falsa). HTTPS cifra con TLS, DNS resuelve nombres y los puertos 80/443 son los estándar.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2024-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "Seleccione las afirmaciones correctas sobre los protocolos DHCP e ICMP: i) DHCP se utiliza para asignar automáticamente direcciones IP a dispositivos en una red. ii) ICMP se utiliza primordialmente para gestionar y controlar errores en la red. iii) DHCP puede proporcionar otra información de red además de direcciones IP, como servidores DNS. iv) ICMP es utilizado para enrutamiento de datos entre redes.",
+            "options": [
+                {
+                    "key": "A",
+                    "value": "i, ii y iii"
+                },
+                {
+                    "key": "B",
+                    "value": "ii y iv"
+                },
+                {
+                    "key": "C",
+                    "value": "i, iii y iv"
+                },
+                {
+                    "key": "D",
+                    "value": "Solo ii"
+                },
+                {
+                    "key": "E",
+                    "value": "Todas las anteriores"
+                }
+            ],
+            "correct": "A",
+            "explanation": "ICMP es para diagnóstico y reporte de errores (ping), no para enrutar datos (iv es falsa). DHCP asigna IPs y opciones como Gateway y DNS.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2024-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cuáles afirmaciones son correctas sobre el proceso de establecimiento de conexión en TCP, conocido como three-way handshake? i) El cliente inicia el proceso enviando un segmento SYN al servidor. ii) El servidor responde con un segmento SYN-ACK para confirmar la recepción del SYN. iii) El cliente finaliza el proceso enviando un ACK al servidor. iv) Si el ACK se pierde, el servidor reenviará el segmento SYN-ACK.",
+            "options": [
+                {
+                    "key": "A",
+                    "value": "i, ii y iii"
+                },
+                {
+                    "key": "B",
+                    "value": "i, iii y iv"
+                },
+                {
+                    "key": "C",
+                    "value": "i, ii, iii y iv"
+                },
+                {
+                    "key": "D",
+                    "value": "ii, iii y iv"
+                },
+                {
+                    "key": "E",
+                    "value": "Solo i y ii"
+                }
+            ],
+            "correct": "C",
+            "explanation": "El proceso estándar es SYN -> SYN-ACK -> ACK. Si el último ACK se pierde, el mecanismo de retransmisión de TCP (desde el servidor) reenviará el SYN-ACK al no recibir confirmación.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2024-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cuáles afirmaciones son correctas respecto al cierre de conexión en TCP? i) El cierre de conexión en TCP es un proceso de dos pasos conocido como two-way handshake. ii) Cualquier extremo puede iniciar el cierre enviando un segmento FIN. iii) Después de recibir un FIN, el otro extremo debe responder con un ACK. iv) TCP permite el cierre asimétrico de la conexión, donde ambos extremos pueden cerrar independientemente.",
+            "options": [
+                {
+                    "key": "A",
+                    "value": "ii, iii y iv"
+                },
+                {
+                    "key": "B",
+                    "value": "i y iii"
+                },
+                {
+                    "key": "C",
+                    "value": "i, ii y iv"
+                },
+                {
+                    "key": "D",
+                    "value": "Solo ii y iii"
+                },
+                {
+                    "key": "E",
+                    "value": "Todas las anteriores"
+                }
+            ],
+            "correct": "A",
+            "explanation": "El cierre TCP es un proceso de 4 pasos (FIN, ACK, FIN, ACK), no 2. Ambos lados cierran su canal independientemente (cierre asimétrico).",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2024-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Qué describe mejor el propósito de la ventana de congestión en el protocolo TCP? i) Aumentar la velocidad de la conexión de red. ii) Controlar la cantidad de datos que pueden ser enviados antes de necesitar un acuse de recibo. iii) Reducir la cantidad de datos enviados para evitar la pérdida de paquetes. iv) Mejorar la seguridad de la transmisión de datos.",
+            "options": [
+                {
+                    "key": "A",
+                    "value": "Solo ii"
+                },
+                {
+                    "key": "B",
+                    "value": "Solo iii"
+                },
+                {
+                    "key": "C",
+                    "value": "ii y iii"
+                },
+                {
+                    "key": "D",
+                    "value": "i y iv"
+                },
+                {
+                    "key": "E",
+                    "value": "Todas las anteriores"
+                }
+            ],
+            "correct": "C",
+            "explanation": "La ventana de congestión (cwnd) regula el flujo para no saturar la red, limitando los bytes en vuelo (ii) y previniendo colapso/pérdida de paquetes (iii).",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2024-1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cuál es la principal diferencia entre el modelo OSI y el modelo TCP/IP?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "El modelo OSI tiene menos capas."
+                },
+                {
+                    "key": "b",
+                    "value": "El modelo OSI es sólo teórico, mientras que TCP/IP se implementa en la práctica."
+                },
+                {
+                    "key": "c",
+                    "value": "El modelo TCP/IP no tiene una capa de transporte."
+                },
+                {
+                    "key": "d",
+                    "value": "El modelo OSI no admite protocolos."
+                },
+                {
+                    "key": "e",
+                    "value": "Ambos son idénticos."
+                }
+            ],
+            "correct": "b",
+            "explanation": "OSI es un modelo de referencia académica, mientras que TCP/IP define los protocolos reales que usamos hoy.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-2.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Qué protocolo de la capa de aplicación es utilizado comúnmente para el envío de correo electrónico?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "HTTP"
+                },
+                {
+                    "key": "b",
+                    "value": "FTP"
+                },
+                {
+                    "key": "c",
+                    "value": "SMTP"
+                },
+                {
+                    "key": "d",
+                    "value": "DNS"
+                },
+                {
+                    "key": "e",
+                    "value": "TCP"
+                }
+            ],
+            "correct": "c",
+            "explanation": "SMTP (Simple Mail Transfer Protocol) se encarga de enviar y enrutar correos electrónicos entre servidores.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-2.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cuál de los siguientes protocolos de transporte está orientado a la conexión?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "UDP"
+                },
+                {
+                    "key": "b",
+                    "value": "ICMP"
+                },
+                {
+                    "key": "c",
+                    "value": "IP"
+                },
+                {
+                    "key": "d",
+                    "value": "TCP"
+                },
+                {
+                    "key": "e",
+                    "value": "ARP"
+                }
+            ],
+            "correct": "d",
+            "explanation": "TCP establece una conexión lógica antes de transferir datos para garantizar fiabilidad.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-2.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cuál de las siguientes capas del modelo TCP/IP se encarga del enrutamiento?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Enlace"
+                },
+                {
+                    "key": "b",
+                    "value": "Internet"
+                },
+                {
+                    "key": "c",
+                    "value": "Transporte"
+                },
+                {
+                    "key": "d",
+                    "value": "Aplicación"
+                },
+                {
+                    "key": "e",
+                    "value": "Ninguna de las anteriores"
+                }
+            ],
+            "correct": "b",
+            "explanation": "La capa de Internet (equivalente a Red en OSI) maneja el direccionamiento IP y el enrutamiento de paquetes.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-2.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cuál es la principal responsabilidad de la capa de transporte en el modelo OSI?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Enlace de datos"
+                },
+                {
+                    "key": "b",
+                    "value": "Enrutamiento"
+                },
+                {
+                    "key": "c",
+                    "value": "Transmisión de bits"
+                },
+                {
+                    "key": "d",
+                    "value": "Establecimiento, mantenimiento y terminación de sesiones"
+                },
+                {
+                    "key": "e",
+                    "value": "Segmentación y ensamblado de datos"
+                }
+            ],
+            "correct": "e",
+            "explanation": "La capa de transporte divide los datos grandes en segmentos más pequeños para su transmisión y los reensambla en el destino.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-2.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cuál de las siguientes afirmaciones es verdadera acerca del modelo OSI?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Es un estándar de implementación"
+                },
+                {
+                    "key": "b",
+                    "value": "Se desarrolló después del modelo TCP/IP"
+                },
+                {
+                    "key": "c",
+                    "value": "Es menos abstracto que el modelo TCP/IP"
+                },
+                {
+                    "key": "d",
+                    "value": "No se utiliza en la práctica moderna"
+                },
+                {
+                    "key": "e",
+                    "value": "Todas las anteriores"
+                }
+            ],
+            "correct": "b",
+            "explanation": "Históricamente, los protocolos TCP/IP se desarrollaron e implementaron antes de que el modelo OSI fuera estandarizado formalmente.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-2.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cuál capa del modelo OSI se encarga de la conversión de datos y codificación?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Sesión"
+                },
+                {
+                    "key": "b",
+                    "value": "Presentación"
+                },
+                {
+                    "key": "c",
+                    "value": "Aplicación"
+                },
+                {
+                    "key": "d",
+                    "value": "Red"
+                },
+                {
+                    "key": "e",
+                    "value": "Transporte"
+                }
+            ],
+            "correct": "b",
+            "explanation": "La capa de presentación traduce los datos entre el formato de la red y el formato que la aplicación puede entender (ej. ASCII, EBCDIC, JPEG).",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-2.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Qué protocolo de transporte utiliza DNS por defecto para las consultas? ¿Para la transferencia de zonas?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "TCP-IP"
+                },
+                {
+                    "key": "b",
+                    "value": "IP - UDP"
+                },
+                {
+                    "key": "c",
+                    "value": "UDP-TCP"
+                },
+                {
+                    "key": "d",
+                    "value": "Ethernet - IP"
+                },
+                {
+                    "key": "e",
+                    "value": "UDP - IP"
+                }
+            ],
+            "correct": "c",
+            "explanation": "DNS usa UDP para consultas normales (rápidas) y TCP para transferencias de zona (fiabilidad para grandes volúmenes de datos).",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-2.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "De acuerdo a la lectura sobre modelo OSI vs TCP/IP, ¿cuál de las siguientes afirmaciones es correcta respecto a las críticas al modelo OSI y los protocolos?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "El modelo OSI y sus protocolos dominaron el mundo de la tecnología desde su aparición."
+                },
+                {
+                    "key": "b",
+                    "value": "David Clark, del M.I.T., propuso una teoría llamada 'macropolítica de los dos elefantes'."
+                },
+                {
+                    "key": "c",
+                    "value": "Si los estándares se escriben demasiado pronto, estos son siempre bien recibidos por las empresas."
+                },
+                {
+                    "key": "d",
+                    "value": "Una aparición inoportuna de estándares puede resultar en inversiones mal direccionadas."
+                },
+                {
+                    "key": "e",
+                    "value": "El éxito de un estándar no depende en absoluto del tiempo en que se establece."
+                }
+            ],
+            "correct": "d",
+            "explanation": "Los estándares que llegan muy tarde o muy temprano (Apocalipsis de los dos elefantes) pueden fallar; si es muy temprano, la inversión puede estar mal dirigida por falta de experiencia real.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-2.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "Considere un escenario en el que un cliente inicia una conexión TCP con un servidor. El cliente envía un segmento con un número de secuencia inicial (ISN) de 1000. El servidor responde con un segmento con un número de secuencia inicial de 2000 y un número de acuse de recibo de 1001. ¿Qué número de acuse de recibo debería enviar el cliente en el último paso del 'three-way handshake' para completar el establecimiento de la conexión?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "1000"
+                },
+                {
+                    "key": "b",
+                    "value": "1001"
+                },
+                {
+                    "key": "c",
+                    "value": "2000"
+                },
+                {
+                    "key": "d",
+                    "value": "2001"
+                },
+                {
+                    "key": "e",
+                    "value": "3001"
+                }
+            ],
+            "correct": "d",
+            "explanation": "El cliente debe confirmar el ISN del servidor (2000). El ACK siempre es el número recibido + 1, por lo tanto 2000 + 1 = 2001.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-2.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "Un cliente y un servidor están comunicándose a través de una conexión TCP. Durante una etapa del intercambio, el servidor envia un segmento TCP al cliente con una ventana de 2048 bytes. ¿Qué significa este valor para la comunicación?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "El servidor puede recibir hasta 2048 bytes adicionales del cliente sin enviar un acuse."
+                },
+                {
+                    "key": "b",
+                    "value": "El cliente puede recibir hasta 2048 bytes adicionales del servidor sin enviar un acuse."
+                },
+                {
+                    "key": "c",
+                    "value": "El servidor espera recibir exactamente 2048 bytes del cliente antes de enviar un acuse."
+                },
+                {
+                    "key": "d",
+                    "value": "El cliente debe esperar 2048 milisegundos antes de enviar más datos."
+                },
+                {
+                    "key": "e",
+                    "value": "El servidor enviará 2048 bytes de datos en su próximo segmento."
+                }
+            ],
+            "correct": "a",
+            "explanation": "La 'Ventana' (Window) anunciada por el servidor indica cuánto espacio libre tiene en su búfer de recepción, autorizando al cliente a enviar esa cantidad de datos.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-2.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "Un atacante ha logrado interceptar y analizar el tráfico de red entre un cliente y un servidor que están utilizando TCP para su comunicación. El atacante tiene la intención de robar la sesión TCP existente. ¿Qué pieza crucial de información necesitaría el atacante para lograr con éxito el robo de la sesión?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "La dirección MAC del servidor"
+                },
+                {
+                    "key": "b",
+                    "value": "El número de puerto del cliente"
+                },
+                {
+                    "key": "c",
+                    "value": "El tamaño de la ventana de anuncio del servidor"
+                },
+                {
+                    "key": "d",
+                    "value": "Los números de secuencia y acuse de recibo actuales en la sesión TCP"
+                },
+                {
+                    "key": "e",
+                    "value": "La versión del protocolo TCP que se está utilizando"
+                }
+            ],
+            "correct": "d",
+            "explanation": "Para suplantar la identidad en una sesión TCP activa (Session Hijacking), el atacante debe enviar paquetes con los números de secuencia correctos que el receptor espera, de lo contrario serán descartados.",
+            "ai_deduced": false,
+            "source": "PEP 1 - Redes 2023-2.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Es correcto afirmar que el nivel de transporte del modelo TCP/IP es exactamente igual al nivel de red del modelo OSI?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Verdadero"
+                },
+                {
+                    "key": "b",
+                    "value": "Falso"
+                }
+            ],
+            "correct": "b",
+            "explanation": "Es falso. El nivel de Transporte de TCP/IP es equivalente al nivel de Transporte del modelo OSI. El nivel de Internet de TCP/IP es el que equivale al nivel de Red del modelo OSI.",
+            "ai_deduced": true,
+            "source": "PEP 1 - Redes 2022_1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "En el contexto de la conmutación de paquetes, ¿qué es una trama?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Una unidad lógica para transmisión de datos extremo a extremo a través de múltiples redes."
+                },
+                {
+                    "key": "b",
+                    "value": "Una unidad de datos utilizada para la transmisión de información entre dispositivos conectados directamente (enlace de datos)."
+                },
+                {
+                    "key": "c",
+                    "value": "Un segmento de datos de la capa de transporte."
+                },
+                {
+                    "key": "d",
+                    "value": "Un paquete que ha sido fragmentado por un router."
+                }
+            ],
+            "correct": "b",
+            "explanation": "La trama (frame) es la PDU de la capa de enlace de datos y se utiliza para mover datos entre nodos adyacentes (conectados directamente), a diferencia del paquete/datagrama que se enruta a través de la red.",
+            "ai_deduced": true,
+            "source": "PEP 1 - Redes 2022_1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cómo se denomina al proceso en que los datos de la aplicación bajan de nivel en nivel y se transmiten por los medios de la red, agregando encabezados de control?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Segmentación"
+                },
+                {
+                    "key": "b",
+                    "value": "Encapsulación"
+                },
+                {
+                    "key": "c",
+                    "value": "Enrutamiento"
+                },
+                {
+                    "key": "d",
+                    "value": "Control de Flujo"
+                }
+            ],
+            "correct": "b",
+            "explanation": "La encapsulación es el proceso de añadir información de control (encabezados) a los datos a medida que descienden por las capas del modelo de red antes de ser transmitidos.",
+            "ai_deduced": true,
+            "source": "PEP 1 - Redes 2022_1.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cuál es la función principal de un NAP (Network Access Point) en la estructura de Internet?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Asignar direcciones IP a los usuarios finales."
+                },
+                {
+                    "key": "b",
+                    "value": "Actuar como un firewall para toda la red."
+                },
+                {
+                    "key": "c",
+                    "value": "Es una instalación donde los ISP pueden interconectarse entre sí (intercambio de tráfico)."
+                },
+                {
+                    "key": "d",
+                    "value": "Es un protocolo de la capa de aplicación para transferencia de archivos."
+                }
+            ],
+            "correct": "c",
+            "explanation": "Un NAP (ahora comúnmente llamados IXP) es una infraestructura física clave del backbone de Internet donde diferentes proveedores de servicios (ISP) intercambian tráfico de redes.",
+            "ai_deduced": true,
+            "source": "PEP 1 - Redes 2022_2.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Por qué se dice que UDP es un protocolo de 'disparar y olvidar' (fire and forget)?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Porque elimina los datos inmediatamente después de enviarlos."
+                },
+                {
+                    "key": "b",
+                    "value": "Porque garantiza que los datos lleguen sin que el usuario se preocupe."
+                },
+                {
+                    "key": "c",
+                    "value": "Porque no establece conexión previa (handshake) ni espera confirmación de recepción (ACK)."
+                },
+                {
+                    "key": "d",
+                    "value": "Porque siempre tiene mayor prioridad que TCP."
+                }
+            ],
+            "correct": "c",
+            "explanation": "UDP no orientado a conexión y no confiable; el emisor envía los datagramas sin verificar si el receptor está listo y no rastrea si llegaron o no (sin ACKs).",
+            "ai_deduced": true,
+            "source": "PEP 1 - Redes 2022_2.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Qué significa que el protocolo IP funcione bajo el concepto de 'mejor esfuerzo' (best effort)?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Que utiliza toda la CPU disponible para enviar el paquete."
+                },
+                {
+                    "key": "b",
+                    "value": "Que intentará entregar el paquete, pero no garantiza la entrega, ni el orden, ni la integridad."
+                },
+                {
+                    "key": "c",
+                    "value": "Que retransmite automáticamente los paquetes si se pierden."
+                },
+                {
+                    "key": "d",
+                    "value": "Que establece un circuito virtual dedicado para asegurar la calidad."
+                }
+            ],
+            "correct": "b",
+            "explanation": "IP es un protocolo no confiable. 'Mejor esfuerzo' implica que la red hace lo posible por llevar el paquete a destino, pero si ocurre un error (congestión, fallo), el paquete se descarta sin notificar al origen (esa tarea recae en TCP si se usa).",
+            "ai_deduced": true,
+            "source": "PEP 1 - Redes 2022_2.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "En una red de difusión (broadcast) con medio compartido, ¿cómo se gestiona la recepción de mensajes?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "El mensaje va directo solo al destinatario mediante un circuito dedicado."
+                },
+                {
+                    "key": "b",
+                    "value": "Todos los terminales reciben el mensaje, pero solo el destinatario procesa los datos; cada terminal debe controlar el acceso al medio."
+                },
+                {
+                    "key": "c",
+                    "value": "Un servidor central decide quién habla y quién escucha."
+                },
+                {
+                    "key": "d",
+                    "value": "Los mensajes se almacenan en un búfer hasta que el medio está libre."
+                }
+            ],
+            "correct": "b",
+            "explanation": "En redes de difusión (como Ethernet antiguo o Wi-Fi), el medio es compartido. Físicamente todos 'escuchan' la señal, pero lógicamente solo la procesa quien coincide con la dirección de destino. El control de acceso al medio (MAC) es vital para evitar colisiones.",
+            "ai_deduced": true,
+            "source": "PEP 1 - Redes 2022_2.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "Si realizas un 'ping' a una dirección IP y obtienes respuesta, ¿qué protocolo de la capa de Internet está respondiendo?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "TCP"
+                },
+                {
+                    "key": "b",
+                    "value": "UDP"
+                },
+                {
+                    "key": "c",
+                    "value": "ICMP"
+                },
+                {
+                    "key": "d",
+                    "value": "ARP"
+                }
+            ],
+            "correct": "c",
+            "explanation": "El comando ping utiliza el protocolo ICMP (Internet Control Message Protocol), específicamente los mensajes Echo Request y Echo Reply, que se encapsulan directamente sobre IP.",
+            "ai_deduced": true,
+            "source": "PEP 1 - Redes 2022_2.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "En el contexto del enrutamiento entre subredes (ej. desde un PC en una LAN a un servidor en otra LAN), ¿qué ocurre con las direcciones MAC e IP en el paquete mientras viaja?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Tanto las direcciones IP como las MAC cambian en cada salto de router."
+                },
+                {
+                    "key": "b",
+                    "value": "Las direcciones IP origen/destino se mantienen (generalmente), pero las direcciones MAC origen/destino cambian en cada enlace (salto)."
+                },
+                {
+                    "key": "c",
+                    "value": "Las direcciones MAC se mantienen de extremo a extremo, pero las IP cambian."
+                },
+                {
+                    "key": "d",
+                    "value": "Ninguna dirección cambia durante todo el trayecto."
+                }
+            ],
+            "correct": "b",
+            "explanation": "Las direcciones IP identifican los extremos finales y no cambian (salvo NAT). Las direcciones MAC son locales al enlace de datos; cada router reescribe la trama poniendo su propia MAC como origen y la MAC del siguiente salto como destino.",
+            "ai_deduced": true,
+            "source": "PEP 1 - Redes 2022_2.pdf"
+        },
+        {
+            "subject": "Redes Computacionales",
+            "question": "¿Cuál es la diferencia en el proceso de segmentación entre TCP y UDP?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "TCP segmenta el flujo de datos y numera los segmentos; UDP envía datagramas completos preservando los límites del mensaje."
+                },
+                {
+                    "key": "b",
+                    "value": "UDP segmenta los datos más pequeños que TCP."
+                },
+                {
+                    "key": "c",
+                    "value": "TCP no segmenta, envía todo el archivo de una vez."
+                },
+                {
+                    "key": "d",
+                    "value": "Ambos procesos son idénticos en la capa de transporte."
+                }
+            ],
+            "correct": "a",
+            "explanation": "TCP es un protocolo orientado a flujo (stream); divide los datos en segmentos según el MSS y los numera para reordenarlos. UDP es orientado a datagramas; la aplicación debe entregar bloques de datos que quepan en un paquete, y UDP respeta esos límites (message boundaries).",
+            "ai_deduced": true,
+            "source": "PEP 1 - Redes 2022_2.pdf"
+        }
+    ]
+}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import theme from './theme/theme';
-import questionsData from './data/preguntas.json';
+
 import MainMenu from './components/MainMenu';
 import Quiz from './components/Quiz';
 import Results from './components/Results';
@@ -10,24 +10,44 @@ import GradientText from './components/atoms/GradientText';
 
 function App() {
   const [view, setView] = useState('menu'); // 'menu', 'quiz', 'results'
-  const [allQuestions, setAllQuestions] = useState([]);
+  const [subjectsData, setSubjectsData] = useState([]);
+  const [currentSubject, setCurrentSubject] = useState(null);
   const [quizQuestions, setQuizQuestions] = useState([]);
   const [userAnswers, setUserAnswers] = useState([]);
   const [score, setScore] = useState(0);
 
   useEffect(() => {
-    // Load questions from JSON
-    setAllQuestions(questionsData);
+    // Dynamically load all subject JSON files
+    const loadSubjects = async () => {
+      const modules = import.meta.glob('./data/subjects/*.json');
+      const loadedSubjects = [];
+
+      for (const path in modules) {
+        const mod = await modules[path]();
+        // mod.default because JSON import usually gives the default export or the module itself depends on configuration
+        // In Vite with JSON, it typically works directly. Let's check the result.
+        // Actually, import.meta.glob with JSON might be tricky if not careful.
+        // Standard import gives the object.
+        loadedSubjects.push(mod.default || mod);
+      }
+      setSubjectsData(loadedSubjects);
+    };
+
+    loadSubjects();
   }, []);
 
   const startQuiz = (config) => {
     const { subject, source, count } = config;
 
-    let filtered = allQuestions;
+    // Find the subject data object
+    const subjectData = subjectsData.find(s => s.name === subject);
 
-    if (subject) {
-      filtered = filtered.filter(q => q.subject === subject);
+    if (!subjectData) {
+      console.error("Subject not found:", subject);
+      return;
     }
+
+    let filtered = subjectData.questions;
 
     if (source && source.length > 0) {
       filtered = filtered.filter(q => source.includes(q.source));
@@ -39,6 +59,7 @@ function App() {
     // Slice to count
     const selected = filtered.slice(0, count);
 
+    setCurrentSubject(subjectData);
     setQuizQuestions(selected);
     setUserAnswers([]);
     setScore(0);
@@ -56,6 +77,7 @@ function App() {
     setQuizQuestions([]);
     setUserAnswers([]);
     setScore(0);
+    setCurrentSubject(null);
   };
 
   const isQuiz = view === 'quiz';
@@ -72,7 +94,7 @@ function App() {
 
         {view === 'menu' && (
           <MainMenu
-            questions={allQuestions}
+            subjectsData={subjectsData}
             onStart={startQuiz}
           />
         )}
