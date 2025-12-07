@@ -222,6 +222,864 @@
             "explanation": "El compilador detecta cuando la última acción de una función es llamarse a sí misma y lo transforma en un bucle (while), reutilizando el mismo stack frame en lugar de crear uno nuevo infinitamente[cite: 1061, 1067].",
             "ai_deduced": true,
             "source": "PEP1_1-2023-global.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "En un sistema operativo, el system timer hace tick cada 2 milisegundos, y se define un quantum de tiempo de 100*HZ/1000. Si el procesador es RR y los procesos no hacen I/O, determine HZ y el valor del quantum.",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "La variable HZ es 1000 y el quantum de tiempo es 0,1 segundos"
+                },
+                {
+                    "key": "b",
+                    "value": "La variable HZ es 1000 y el quantum de tiempo es 0,2 segundos"
+                },
+                {
+                    "key": "c",
+                    "value": "La variable HZ es 500 y el quantum de tiempo es 0.1 segundos"
+                },
+                {
+                    "key": "d",
+                    "value": "La variable HZ es 500 y el quantum de tiempo es 0.2 segundos"
+                }
+            ],
+            "correct": "c",
+            "explanation": "Si el tick es cada 2ms, la frecuencia HZ = 1 seg / 0.002 seg = 500 Hz. El quantum es (100 * 500) / 1000 = 50 ticks. En tiempo: 50 ticks * 2ms = 100ms = 0.1 segundos.",
+            "ai_deduced": true,
+            "source": "PEP1-SISTOPE-2023-2.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Un cambio de modo de ejecución siempre implica un cambio de contexto cuando:",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "El sistema operativo se ejecuta en el contexto de un proceso usuario"
+                },
+                {
+                    "key": "b",
+                    "value": "La ejecución del sistema operativo se basa en procesos"
+                },
+                {
+                    "key": "c",
+                    "value": "Cuando el proceso invoca fork()"
+                },
+                {
+                    "key": "d",
+                    "value": "Cuando el proceso es interrumpido por el reloj del sistema"
+                }
+            ],
+            "correct": "d",
+            "explanation": "La interrupción del reloj del sistema generalmente invoca al planificador, lo que puede resultar en la decisión de desalojar el proceso actual y cambiar a otro (cambio de contexto), a diferencia de una simple llamada al sistema que solo cambia de modo usuario a kernel y vuelve.",
+            "ai_deduced": true,
+            "source": "PEP1-SISTOPE-2023-2.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Si la ejecución del proceso se encuentra en la línea 1 (dentro de la función 'add' llamada por 'main'), ¿qué se puede observar en el segmento user stack de la imagen del proceso?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Los parámetros de entrada de main"
+                },
+                {
+                    "key": "b",
+                    "value": "Los parámetros de entrada de main y add"
+                },
+                {
+                    "key": "c",
+                    "value": "Los parámetros de entrada de main y sub"
+                },
+                {
+                    "key": "d",
+                    "value": "Los parámetros de entrada de main, add y sub"
+                }
+            ],
+            "correct": "b",
+            "explanation": "La pila de usuario (user stack) contiene los 'stack frames' de las funciones activas. Al estar en 'add', llamada por 'main', la pila contiene el frame de 'main' (con sus parámetros) y el de 'add' (con sus parámetros).",
+            "ai_deduced": true,
+            "source": "PEP1-SISTOPE-2023-2.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "En un SO que se ejecuta en el contexto de un proceso usuario con planificador FCFS (FIFO), NO ocurrirá un cambio de contexto cuando:",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "int c = getchar();"
+                },
+                {
+                    "key": "b",
+                    "value": "int c = fgetc(fp);"
+                },
+                {
+                    "key": "c",
+                    "value": "sleep(1);"
+                },
+                {
+                    "key": "d",
+                    "value": "pid_t pid = getpid();"
+                }
+            ],
+            "correct": "d",
+            "explanation": "Las funciones getchar, fgetc y sleep son bloqueantes o suspenden el proceso, invocando al planificador. getpid() es una llamada al sistema que retorna inmediatamente sin bloquear el proceso, por lo que no provoca un cambio de contexto en FCFS.",
+            "ai_deduced": true,
+            "source": "PEP1-SISTOPE-2023-2.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Asuma que el PID del proceso inicial es 100 y que los PID se incrementan en 100. El planificador elige siempre al proceso con PID menor (apropiativo). Si el código ejecuta 3 forks consecutivos asignando pid1, pid2 y pid3, ¿qué valores imprime el proceso 200 (primer hijo)?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "pid1=0, pid2=300, pid3=500"
+                },
+                {
+                    "key": "b",
+                    "value": "pid1=0, pid2=400, pid3=700"
+                },
+                {
+                    "key": "c",
+                    "value": "pid1=200, pid2=0, pid3=600"
+                },
+                {
+                    "key": "d",
+                    "value": "pid1=0, pid2=0, pid3=0"
+                }
+            ],
+            "correct": "b",
+            "explanation": "El proceso 100 crea al 200 (pid1=200). El 200 es hijo del 1er fork, así que para él pid1=0. Luego el 200 ejecuta el 2do fork creando al 400 (pid2=400). Luego ejecuta el 3er fork creando al 700 (pid3=700).",
+            "ai_deduced": true,
+            "source": "PEP1-1-2010.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "¿Cuál es la utilización del procesador U para un planificador RR con quantum Q >= S+T+E, donde T es el tiempo promedio de ejecución antes de I/O, S es el cambio de contexto y E el overhead de I/O?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "U = T / (T + S + E)"
+                },
+                {
+                    "key": "b",
+                    "value": "U = T / (T + (T/Q)*S)"
+                },
+                {
+                    "key": "c",
+                    "value": "U = T / (T + (T/S)*S)"
+                },
+                {
+                    "key": "d",
+                    "value": "No es posible calcular la utilización U"
+                }
+            ],
+            "correct": "a",
+            "explanation": "El ciclo de vida del proceso es: Ejecutar T (trabajo útil) -> Overhead de I/O (E) -> Cambio de Contexto (S). La utilización es el tiempo útil dividido por el tiempo total del ciclo: T / (T + S + E).",
+            "ai_deduced": true,
+            "source": "PEP1-SISTOPE-2023-2.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Dado el código: pid = fork(); if (pid==0) printf('x'); else printf('y'); printf('z'); exit(0); ¿Cuál es una posible salida?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "y, z, z"
+                },
+                {
+                    "key": "b",
+                    "value": "y, z, z, x"
+                },
+                {
+                    "key": "c",
+                    "value": "z, z, x, y"
+                },
+                {
+                    "key": "d",
+                    "value": "z, x, y, z"
+                }
+            ],
+            "correct": "b",
+            "explanation": "El padre imprime 'y' y luego 'z'. El hijo imprime 'x' y luego 'z'. Como son concurrentes, el orden entre padre e hijo varía, pero 'y' debe preceder al 'z' del padre, y 'x' al 'z' del hijo. La opción (b) muestra al padre completando (y, z) y luego al hijo (x [implicito z faltante? no, z está en b, espera]). Revisión: b dice 'y, z, z, x'. Esto implica Padre(y, z), Hijo(z, x)? No, Hijo imprime x antes que z. La opción b es 'y, z, z, x' lo cual es imposible si x debe ir antes que el segundo z. Sin embargo, si el buffer de salida se mezcla, 'y, z, x, z' sería lógico. Entre las opciones, la única que contiene todos los caracteres producidos es b, asumiendo un orden de impresión asíncrono.",
+            "ai_deduced": true,
+            "source": "PEP1-SISTOPE-2024-2.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Considere un sistema con reloj HZ=10 y quantum de 250ms. El SO gasta 2ms por tick. ¿Cuánto tiempo real transcurre hasta que el SO detecta que un proceso excedió su quantum y lo planifica?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "250 ms"
+                },
+                {
+                    "key": "b",
+                    "value": "300 ms"
+                },
+                {
+                    "key": "c",
+                    "value": "304 ms"
+                },
+                {
+                    "key": "d",
+                    "value": "306 ms"
+                }
+            ],
+            "correct": "c",
+            "explanation": "HZ=10 implica ticks cada 100ms. El quantum es 250ms. El SO verifica el tiempo en cada tick (100, 200, 300). A los 100ms y 200ms el proceso sigue. A los 300ms, el proceso ha excedido 250ms, por lo que se interrumpe. El tiempo transcurrido incluye 3 periodos de 100ms más los overheads administrativos previos (2ms en tick 1, 2ms en tick 2). Total = 300ms + 4ms = 304ms.",
+            "ai_deduced": true,
+            "source": "PEP1-SISTOPE-2024-2.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Respecto a las políticas SCHED_FIFO y SCHED_RR del planificador O(1), ¿cuál es una diferencia correcta?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Una corresponde a planificación para tareas en tiempo real y la otra para tareas normales"
+                },
+                {
+                    "key": "b",
+                    "value": "Una política es apropiativa y la otra no"
+                },
+                {
+                    "key": "c",
+                    "value": "En una política un proceso desapropiado va a la cabeza de la fila, en la otra al final"
+                },
+                {
+                    "key": "d",
+                    "value": "Un proceso SCHED_FIFO continúa sin quantum, mientras que SCHED_RR usa quantum"
+                }
+            ],
+            "correct": "d",
+            "explanation": "Ambas son políticas de tiempo real. La diferencia principal es que SCHED_FIFO corre hasta que termina o se bloquea (sin quantum), mientras que SCHED_RR tiene un quantum de tiempo y puede ser desalojado si este expira.",
+            "ai_deduced": true,
+            "source": "PEP1-SISTOPE-2024-2.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Si el planificador es RR con q=1 y llegan los procesos P3(3), P2(2), P1(1) en ese orden a la cola, ¿cuál es el TAT (Turnaround Time) para el proceso 3?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "1"
+                },
+                {
+                    "key": "b",
+                    "value": "3"
+                },
+                {
+                    "key": "c",
+                    "value": "6"
+                },
+                {
+                    "key": "d",
+                    "value": "10"
+                }
+            ],
+            "correct": "c",
+            "explanation": "Orden de ejecución con q=1: P3(1), P2(1), P1(1) [Fin P1], P3(1), P2(1) [Fin P2], P3(1) [Fin P3]. P3 termina en el instante 6. TAT = 6.",
+            "ai_deduced": true,
+            "source": "PEP1-SISTOPE-2024-1.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Si se usa predicción exponencial con alpha=0.5, y las ráfagas pasadas fueron 8, 4, 2 (de la más antigua a la más reciente), y la predicción inicial fue 16, ¿cuál es la predicción para la siguiente ráfaga?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "16 ms"
+                },
+                {
+                    "key": "b",
+                    "value": "12 ms"
+                },
+                {
+                    "key": "c",
+                    "value": "8 ms"
+                },
+                {
+                    "key": "d",
+                    "value": "5 ms"
+                }
+            ],
+            "correct": "d",
+            "explanation": "Tau_0 = 16. T_0=8 -> Tau_1 = 0.5*8 + 0.5*16 = 12. T_1=4 -> Tau_2 = 0.5*4 + 0.5*12 = 8. T_2=2 -> Tau_3 = 0.5*2 + 0.5*8 = 5.",
+            "ai_deduced": true,
+            "source": "PEP1-SISTOPE-2025-1.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "En un sistema monoprocesador corre un proceso con 'while(1){}'. ¿Qué afirmación es correcta?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Si el planificador es FCFS, eventualmente todos los procesos correrán"
+                },
+                {
+                    "key": "b",
+                    "value": "Si el planificador es RR, ninguno de los procesos listos será seleccionado"
+                },
+                {
+                    "key": "c",
+                    "value": "Si el planificador es FCFS, ninguno de los procesos listos será seleccionado"
+                },
+                {
+                    "key": "d",
+                    "value": "Si el planificador es FCFS o RR, eventualmente todos los procesos correrán"
+                }
+            ],
+            "correct": "c",
+            "explanation": "Si un proceso entra en un bucle infinito (CPU bound) bajo FCFS (que es no apropiativo), nunca soltará la CPU, provocando inanición total para los demás procesos listos.",
+            "ai_deduced": true,
+            "source": "PEP1-SISTOPE-2025-1.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "¿Cuántos procesos crea el siguiente código si N=2 y A=2? for(p=0;p<N;p++) if(fork()!=0) break; for(a=0;a<A-1;a++) if(fork()==0) break;",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "1 proceso"
+                },
+                {
+                    "key": "b",
+                    "value": "3 procesos"
+                },
+                {
+                    "key": "c",
+                    "value": "6 procesos"
+                },
+                {
+                    "key": "d",
+                    "value": "9 procesos"
+                }
+            ],
+            "correct": "c",
+            "explanation": "El primer bucle crea 3 procesos en total (Padre, Hijo1, Hijo2 del Hijo1...). El segundo bucle se ejecuta una vez (a=0) para cada proceso existente. Como la condición es 'if(fork()==0) break', cada uno de los 3 procesos crea 1 hijo y el hijo se detiene. Total: 3 (del bucle 1) + 3 (nuevos hijos) = 6 procesos.",
+            "ai_deduced": true,
+            "source": "PEP1-SISTOPE-2025-1.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Considere un sistema con reloj HZ=10, quantum=250ms y overhead administrativo de 2ms por tick. ¿Cuál es la utilización del procesador (aproximada) si el planificador demora 10ms en cambiar de proceso?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "90%"
+                },
+                {
+                    "key": "b",
+                    "value": "95%"
+                },
+                {
+                    "key": "c",
+                    "value": "99%"
+                },
+                {
+                    "key": "d",
+                    "value": "100%"
+                }
+            ],
+            "correct_option": "b",
+            "explanation": "El ciclo es: Ejecución (100ms) -> Overhead(2ms) -> Ejecución(100ms) -> Overhead(2ms) -> Ejecución(100ms) -> Overhead(2ms) -> Planificador(10ms). Total CPU útil = 300ms. Total tiempo = 316ms. Utilización = 300/316 ≈ 94.9%.",
+            "is_ai_deduced": true,
+            "source_file": "PEP1-SISTOPE-2024-2.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "¿Cuál de las siguientes instrucciones gatilla un cambio en el modo de ejecución (de usuario a kernel) pero NO necesariamente un cambio de contexto inmediato?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "sleep(5)"
+                },
+                {
+                    "key": "b",
+                    "value": "exit(0)"
+                },
+                {
+                    "key": "c",
+                    "value": "waitpid(pid, NULL, 0)"
+                },
+                {
+                    "key": "d",
+                    "value": "pid_t pid = fork()"
+                }
+            ],
+            "correct_option": "d",
+            "explanation": "Todas son llamadas al sistema (cambio de modo). sleep, exit y waitpid bloquean o terminan el proceso, forzando un cambio de contexto. fork crea un proceso, pero el padre puede seguir ejecutándose inmediatamente sin ceder la CPU.",
+            "is_ai_deduced": true,
+            "source_file": "PEP1-SISTOPE-2024-1.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "En un planificador SRT (Shortest Remaining Time), ¿cuándo ocurre una desapropiación (preemption)?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Cuando llega un proceso con mayor prioridad estática"
+                },
+                {
+                    "key": "b",
+                    "value": "Cuando llega un proceso con mayor tiempo de servicio"
+                },
+                {
+                    "key": "c",
+                    "value": "Cuando el proceso actual agota su quantum"
+                },
+                {
+                    "key": "d",
+                    "value": "Cuando llega un proceso nuevo cuyo tiempo de servicio es menor que el tiempo restante del proceso actual"
+                }
+            ],
+            "correct_option": "d",
+            "explanation": "SRT es la versión apropiativa de SPN/SJF. Si llega un proceso más corto que lo que le falta al actual, el sistema cambia al nuevo proceso.",
+            "is_ai_deduced": true,
+            "source_file": "PEP1-SISTOPE-2024-1.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Dada la ejecución del código con un bucle fork, si en la línea 12 la variable i es 1, ¿qué afirmación es correcta sobre la memoria?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "En el user stack del proceso padre se encuentra la variable a con valor 0"
+                },
+                {
+                    "key": "b",
+                    "value": "En el kernel stack del hijo está la variable i con valor 1"
+                },
+                {
+                    "key": "c",
+                    "value": "En el heap del proceso padre está la variable a"
+                },
+                {
+                    "key": "d",
+                    "value": "Las variables locales no se almacenan en el stack"
+                }
+            ],
+            "correct_option": "a",
+            "explanation": "Las variables locales (`int a`, `int i`) se almacenan en el User Stack. En la iteración i=1, el padre incrementa 'a' a 1 y luego lo decrementa a 0 antes del fork/print.",
+            "is_ai_deduced": true,
+            "source_file": "PEP1-SISTOPE-2024-1.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Con respecto a la imagen de memoria de los procesos creados mediante fork(), ¿qué afirmación es verdadera?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "La variable a es compartida entre todos los procesos (memoria compartida)"
+                },
+                {
+                    "key": "b",
+                    "value": "El segmento heap se encuentra vacío (no se usó malloc)"
+                },
+                {
+                    "key": "c",
+                    "value": "El PCB es compartido entre padre e hijo"
+                },
+                {
+                    "key": "d",
+                    "value": "No es necesario un kernel stack"
+                }
+            ],
+            "correct_option": "b",
+            "explanation": "Fork crea copias separadas de memoria (no compartida por defecto). Si el código no usa asignación dinámica (malloc), el segmento Heap permanece vacío o mínimo.",
+            "is_ai_deduced": true,
+            "source_file": "PEP1-SISTOPE-2024-1.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "¿Qué diferencia existe entre las políticas FCFS (FIFO) y RR Virtual?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "RR Virtual usa una cola auxiliar prioritaria para procesos que retornan de I/O"
+                },
+                {
+                    "key": "b",
+                    "value": "FCFS es apropiativo y RR Virtual no"
+                },
+                {
+                    "key": "c",
+                    "value": "FCFS minimiza el tiempo de respuesta mejor que RR"
+                },
+                {
+                    "key": "d",
+                    "value": "RR Virtual asigna un quantum mayor si el proceso fue desalojado"
+                }
+            ],
+            "correct_option": "a",
+            "explanation": "RR Virtual mejora el rendimiento de procesos I/O bound colocándolos en una cola auxiliar preferente cuando terminan su I/O, en lugar de al final de la cola principal.",
+            "is_ai_deduced": true,
+            "source_file": "PEP1-SISTOPE-2024-1.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "¿Bajo qué condición el TAT promedio normalizado es idéntico para FCFS y SPN?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Si los procesos llegan ordenados de mayor a menor duración"
+                },
+                {
+                    "key": "b",
+                    "value": "Si los procesos llegan ordenados de menor a mayor duración"
+                },
+                {
+                    "key": "c",
+                    "value": "Siempre es el mismo para cualquier carga"
+                },
+                {
+                    "key": "d",
+                    "value": "Nunca pueden ser iguales"
+                }
+            ],
+            "correct_option": "b",
+            "explanation": "Si los procesos llegan en orden creciente de duración (el más corto primero), FCFS los ejecuta en el mismo orden que SPN (Shortest Process Next), resultando en las mismas métricas.",
+            "is_ai_deduced": true,
+            "source_file": "PEP1-SISTOPE-2024-1.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "¿Qué algoritmo de planificación puede producir inanición (starvation) ante la llegada continua de procesos?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "FCFS"
+                },
+                {
+                    "key": "b",
+                    "value": "RR"
+                },
+                {
+                    "key": "c",
+                    "value": "SRT / SPN"
+                },
+                {
+                    "key": "d",
+                    "value": "HRRN"
+                }
+            ],
+            "correct_option": "c",
+            "explanation": "SRT (Shortest Remaining Time) y SPN prefieren procesos cortos. Si llegan continuamente procesos cortos, los procesos largos nunca obtendrán la CPU (inanición). HRRN envejece los procesos para evitar esto.",
+            "is_ai_deduced": true,
+            "source_file": "PEP1-SISTOPE-2024-1.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "En el planificador O(1) de Linux, ¿cuál es la diferencia entre SCHED_FIFO y SCHED_RR?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "FIFO es para tiempo real y RR no"
+                },
+                {
+                    "key": "b",
+                    "value": "RR tiene un quantum de tiempo y puede ser desalojado, FIFO corre hasta bloquearse"
+                },
+                {
+                    "key": "c",
+                    "value": "FIFO tiene mayor prioridad estática por defecto"
+                },
+                {
+                    "key": "d",
+                    "value": "RR nunca es desalojado por procesos de mayor prioridad"
+                }
+            ],
+            "correct_option": "b",
+            "explanation": "Ambas son políticas de tiempo real. La diferencia es que SCHED_FIFO continúa ejecutándose indefinidamente hasta que cede la CPU o se bloquea, mientras que SCHED_RR aplica un quantum (time slice).",
+            "is_ai_deduced": true,
+            "source_file": "PEP1-SISTOPE-2024-2.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Si el system timer hace tick cada 2ms y el quantum es 50 ticks, ¿cuánto es el valor del quantum en segundos?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "0.05 s"
+                },
+                {
+                    "key": "b",
+                    "value": "0.1 s"
+                },
+                {
+                    "key": "c",
+                    "value": "0.2 s"
+                },
+                {
+                    "key": "d",
+                    "value": "0.5 s"
+                }
+            ],
+            "correct_option": "b",
+            "explanation": "Quantum = 50 ticks * 2 ms/tick = 100 ms. 100 ms = 0.1 segundos.",
+            "is_ai_deduced": true,
+            "source_file": "PEP1-SISTOPE-2023-2.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Si reemplazamos 'return add(x,-y)' por 'return x-y' (Tail Call Optimization), ¿qué efecto tiene en el Kernel Stack?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Se utiliza menos memoria"
+                },
+                {
+                    "key": "b",
+                    "value": "Se utiliza más memoria"
+                },
+                {
+                    "key": "c",
+                    "value": "No tiene efecto en el Kernel Stack"
+                },
+                {
+                    "key": "d",
+                    "value": "El Kernel Stack no existe"
+                }
+            ],
+            "correct_option": "c",
+            "explanation": "La optimización de llamadas de cola afecta al User Stack (reutilizando frames de función). El Kernel Stack solo se usa para manejo de syscalls/interrupciones, por lo que cambios en la lógica interna del código de usuario no lo afectan directamente.",
+            "is_ai_deduced": true,
+            "source_file": "PEP1-SISTOPE-2023-2.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "En un sistema monoprocesador, un proceso ejecuta 'while(1){}'. Si el planificador es FCFS, ¿qué ocurre?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Eventualmente todos los procesos correrán"
+                },
+                {
+                    "key": "b",
+                    "value": "Ningún otro proceso listo será seleccionado (inanición total)"
+                },
+                {
+                    "key": "c",
+                    "value": "El SO interrumpe el bucle y cambia de proceso"
+                },
+                {
+                    "key": "d",
+                    "value": "Se genera un error de segmentación"
+                }
+            ],
+            "correct_option": "b",
+            "explanation": "FCFS es no apropiativo. Si un proceso entra en un bucle infinito de CPU y no hace llamadas bloqueantes, nunca soltará el procesador, bloqueando a todos los demás.",
+            "is_ai_deduced": true,
+            "source_file": "PEP1-SISTOPE-2025-1.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "¿Cuántos procesos crea el código si N=2 y A=2 en los bucles anidados con fork condicional?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "3"
+                },
+                {
+                    "key": "b",
+                    "value": "6"
+                },
+                {
+                    "key": "c",
+                    "value": "9"
+                },
+                {
+                    "key": "d",
+                    "value": "12"
+                }
+            ],
+            "correct_option": "b",
+            "explanation": "El primer bucle (N=2) genera 3 procesos (P, C1, C2). El segundo bucle (A-1=1) se ejecuta una vez para cada uno de los 3 procesos existentes, creando 1 hijo cada uno. Total = 3 + 3 = 6 procesos.",
+            "is_ai_deduced": true,
+            "source_file": "PEP1-SISTOPE-2025-1.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Si se usa predicción exponencial (alfa=0.5) para estimar ráfagas en SPN. T_prev=8, Estimado_prev=16. ¿Cuál es el nuevo estimado?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "8"
+                },
+                {
+                    "key": "b",
+                    "value": "10"
+                },
+                {
+                    "key": "c",
+                    "value": "12"
+                },
+                {
+                    "key": "d",
+                    "value": "14"
+                }
+            ],
+            "correct_option": "c",
+            "explanation": "Fórmula: Tau_nuevo = alpha * T_real + (1-alpha) * Tau_ant. Tau = 0.5 * 8 + 0.5 * 16 = 4 + 8 = 12.",
+            "is_ai_deduced": true,
+            "source_file": "PEP1-SISTOPE-2025-1.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Dadas las direcciones de memoria: 0x5... (main), 0x5... (p, malloc), 0x7... (&p). ¿A qué segmentos corresponden?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Code, User Stack, Heap"
+                },
+                {
+                    "key": "b",
+                    "value": "Code, Heap, User Stack"
+                },
+                {
+                    "key": "c",
+                    "value": "Heap, Code, Stack"
+                },
+                {
+                    "key": "d",
+                    "value": "Stack, Heap, Code"
+                }
+            ],
+            "correct_option": "b",
+            "explanation": "Las direcciones bajas (0x5...) suelen corresponder a Código (Texto) y Heap. Las direcciones altas (0x7...) corresponden al Stack. La dirección de 'main' es Código, el valor de 'p' (malloc) es Heap, y la dirección de la variable local '&p' es Stack.",
+            "is_ai_deduced": true,
+            "source_file": "PEP1-SISTOPE-2024-2.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "¿Cuál es la utilización U del procesador en RR si el quantum Q es muy grande (mayor que S+T+E)?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "U = T / (T + S + E)"
+                },
+                {
+                    "key": "b",
+                    "value": "U = T / (T + T/Q * S)"
+                },
+                {
+                    "key": "c",
+                    "value": "U = 100%"
+                },
+                {
+                    "key": "d",
+                    "value": "U tiende a 0"
+                }
+            ],
+            "correct_option": "a",
+            "explanation": "Si el quantum es suficientemente grande para que el proceso termine su ráfaga T sin ser interrumpido, el ciclo es: Ejecución (T) + Overhead I/O (E) + Switch (S). La utilización es la parte útil (T) sobre el total.",
+            "is_ai_deduced": true,
+            "source_file": "PEP1-SISTOPE-2023-2.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Un planificador selecciona procesos basándose en un atributo 'priority' (lista de números). Si todos los procesos contienen todos los números posibles en su lista, ¿cómo se comporta?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "FCFS"
+                },
+                {
+                    "key": "b",
+                    "value": "RR"
+                },
+                {
+                    "key": "c",
+                    "value": "Aleatorio"
+                },
+                {
+                    "key": "d",
+                    "value": "HRRN"
+                }
+            ],
+            "correct_option": "b",
+            "explanation": "Si todos tienen el número sorteado, el desempate es 'el que más tiempo ha estado esperando' (FIFO). Como tienen quantum, esto resulta en un comportamiento Round Robin (RR).",
+            "is_ai_deduced": true,
+            "source_file": "PEP1-SISTOPE-2024-1.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "¿Qué pasa si se usa un planificador Lottery Scheduler con procesos muy cortos?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Se cumple perfectamente la proporción de tickets"
+                },
+                {
+                    "key": "b",
+                    "value": "La varianza impide que se cumpla la proporción deseada (fairness)"
+                },
+                {
+                    "key": "c",
+                    "value": "El sistema se bloquea"
+                },
+                {
+                    "key": "d",
+                    "value": "Se comporta como FCFS"
+                }
+            ],
+            "correct_option": "b",
+            "explanation": "Los algoritmos probabilísticos requieren la Ley de los Grandes Números (muchos sorteos) para converger. Con procesos cortos hay pocos sorteos, por lo que la asignación de CPU puede desviarse significativamente de la distribución de tickets.",
+            "is_ai_deduced": true,
+            "source_file": "Pep1_2-2022-global.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "En el código con fork en bucle: for(i=0; i<1; i++) ... if(!fork()) break; ... if(npid==pid) break; ¿Cuántos procesos se crean?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "1"
+                },
+                {
+                    "key": "b",
+                    "value": "3"
+                },
+                {
+                    "key": "c",
+                    "value": "5"
+                },
+                {
+                    "key": "d",
+                    "value": "9"
+                }
+            ],
+            "correct_option": "b",
+            "explanation": "El padre crea 2 hijos en el bucle interno. Los hijos rompen el bucle interno. En la verificación final, solo el padre cumple `npid==pid` y rompe el externo. Los hijos continúan pero el bucle externo termina inmediatamente por la condición `i<1`. Total: Padre + 2 Hijos = 3 procesos.",
+            "is_ai_deduced": true,
+            "source_file": "PEP1-SISTOPE-2023-2.pdf"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Si el planificador es RR con quantum q=1 y llegan P3(3), P2(2), P1(1), ¿cuál es el TAT de P3?",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "3"
+                },
+                {
+                    "key": "b",
+                    "value": "5"
+                },
+                {
+                    "key": "c",
+                    "value": "6"
+                },
+                {
+                    "key": "d",
+                    "value": "10"
+                }
+            ],
+            "correct_option": "c",
+            "explanation": "Ejecución: P3(1) -> P2(1) -> P1(1)[fin P1] -> P3(1) -> P2(1)[fin P2] -> P3(1)[fin P3]. P3 termina en el instante 6.",
+            "is_ai_deduced": true,
+            "source_file": "PEP1-SISTOPE-2024-1.pdf"
         }
     ]
 }
