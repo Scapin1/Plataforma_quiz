@@ -14,6 +14,7 @@ const SettingsPanel = ({
     selectedSubject,
     selectedSources,
     questionCount,
+    maxQuestions,
     onSubjectChange,
     onSourceChange,
     onCountChange,
@@ -73,20 +74,30 @@ const SettingsPanel = ({
 
             {/* Question Count */}
             <Box>
-                <Typography variant="subtitle2" color="text.secondary" mb={1}>
-                    CANTIDAD DE PREGUNTAS
-                </Typography>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
+                    <Typography variant="subtitle2" color="text.secondary">
+                        CANTIDAD DE PREGUNTAS
+                    </Typography>
+                    <Typography variant="caption" color="primary">
+                        (Máx: {maxQuestions})
+                    </Typography>
+                </Box>
                 <FormControl fullWidth>
                     <Select
                         value={questionCount}
                         onChange={(e) => onCountChange(e.target.value)}
                         sx={{ bgcolor: 'background.paper', borderRadius: 2 }}
                     >
-                        {[5, 10, 15, 20, 30, 50].map((count) => (
-                            <MenuItem key={count} value={count}>
-                                {count} Preguntas
-                            </MenuItem>
-                        ))}
+                        {[5, 10, 15, 20, 30, 50]
+                            .filter(count => count <= maxQuestions)
+                            .concat([maxQuestions])
+                            .sort((a, b) => a - b)
+                            .filter((item, index, array) => array.indexOf(item) === index) // Unique
+                            .map((count) => (
+                                <MenuItem key={count} value={count}>
+                                    {count} Preguntas
+                                </MenuItem>
+                            ))}
                     </Select>
                 </FormControl>
             </Box>

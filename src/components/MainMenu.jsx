@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Box, Fade } from '@mui/material';
 import { NetworkCheck, Layers, Book, Computer, Science } from '@mui/icons-material'; // MUI Icons
 import SubjectCard from './molecules/SubjectCard';
@@ -72,6 +72,13 @@ function MainMenu({ subjectsData, onStart }) {
     Science
   };
 
+  // Ensure question count doesn't exceed available questions
+  useEffect(() => {
+    if (questionCount > availableCount && availableCount > 0) {
+      setQuestionCount(availableCount);
+    }
+  }, [availableCount, questionCount]);
+
   return (
     <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
 
@@ -113,6 +120,7 @@ function MainMenu({ subjectsData, onStart }) {
               selectedSubject={selectedSubject}
               selectedSources={selectedSources}
               questionCount={questionCount}
+              maxQuestions={availableCount}
               onSubjectChange={setSelectedSubject}
               onSourceChange={setSelectedSources}
               onCountChange={setQuestionCount}
