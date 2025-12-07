@@ -1700,6 +1700,258 @@
     "source": "PEP 1 - Redes 2023-2.pdf"
 },
 {
+    "subject": "Redes Computacionales",
+    "question": "¿Es correcto afirmar que el nivel de transporte del modelo TCP/IP es exactamente igual al nivel de red del modelo OSI?",
+    "options": [
+      {
+        "key": "a",
+        "value": "Verdadero"
+      },
+      {
+        "key": "b",
+        "value": "Falso"
+      }
+    ],
+    "correct": "b",
+    "explanation": "Es falso. El nivel de Transporte de TCP/IP es equivalente al nivel de Transporte del modelo OSI. El nivel de Internet de TCP/IP es el que equivale al nivel de Red del modelo OSI.",
+    "ai_deduced": true,
+    "source": "PEP 1 - Redes 2022_1.pdf"
+  },
+  {
+    "subject": "Redes Computacionales",
+    "question": "En el contexto de la conmutación de paquetes, ¿qué es una trama?",
+    "options": [
+      {
+        "key": "a",
+        "value": "Una unidad lógica para transmisión de datos extremo a extremo a través de múltiples redes."
+      },
+      {
+        "key": "b",
+        "value": "Una unidad de datos utilizada para la transmisión de información entre dispositivos conectados directamente (enlace de datos)."
+      },
+      {
+        "key": "c",
+        "value": "Un segmento de datos de la capa de transporte."
+      },
+      {
+        "key": "d",
+        "value": "Un paquete que ha sido fragmentado por un router."
+      }
+    ],
+    "correct": "b",
+    "explanation": "La trama (frame) es la PDU de la capa de enlace de datos y se utiliza para mover datos entre nodos adyacentes (conectados directamente), a diferencia del paquete/datagrama que se enruta a través de la red.",
+    "ai_deduced": true,
+    "source": "PEP 1 - Redes 2022_1.pdf"
+  },
+  {
+    "subject": "Redes Computacionales",
+    "question": "¿Cómo se denomina al proceso en que los datos de la aplicación bajan de nivel en nivel y se transmiten por los medios de la red, agregando encabezados de control?",
+    "options": [
+      {
+        "key": "a",
+        "value": "Segmentación"
+      },
+      {
+        "key": "b",
+        "value": "Encapsulación"
+      },
+      {
+        "key": "c",
+        "value": "Enrutamiento"
+      },
+      {
+        "key": "d",
+        "value": "Control de Flujo"
+      }
+    ],
+    "correct": "b",
+    "explanation": "La encapsulación es el proceso de añadir información de control (encabezados) a los datos a medida que descienden por las capas del modelo de red antes de ser transmitidos.",
+    "ai_deduced": true,
+    "source": "PEP 1 - Redes 2022_1.pdf"
+  },
+  {
+    "subject": "Redes Computacionales",
+    "question": "¿Cuál es la función principal de un NAP (Network Access Point) en la estructura de Internet?",
+    "options": [
+      {
+        "key": "a",
+        "value": "Asignar direcciones IP a los usuarios finales."
+      },
+      {
+        "key": "b",
+        "value": "Actuar como un firewall para toda la red."
+      },
+      {
+        "key": "c",
+        "value": "Es una instalación donde los ISP pueden interconectarse entre sí (intercambio de tráfico)."
+      },
+      {
+        "key": "d",
+        "value": "Es un protocolo de la capa de aplicación para transferencia de archivos."
+      }
+    ],
+    "correct": "c",
+    "explanation": "Un NAP (ahora comúnmente llamados IXP) es una infraestructura física clave del backbone de Internet donde diferentes proveedores de servicios (ISP) intercambian tráfico de redes.",
+    "ai_deduced": true,
+    "source": "PEP 1 - Redes 2022_2.pdf"
+  },
+  {
+    "subject": "Redes Computacionales",
+    "question": "¿Por qué se dice que UDP es un protocolo de 'disparar y olvidar' (fire and forget)?",
+    "options": [
+      {
+        "key": "a",
+        "value": "Porque elimina los datos inmediatamente después de enviarlos."
+      },
+      {
+        "key": "b",
+        "value": "Porque garantiza que los datos lleguen sin que el usuario se preocupe."
+      },
+      {
+        "key": "c",
+        "value": "Porque no establece conexión previa (handshake) ni espera confirmación de recepción (ACK)."
+      },
+      {
+        "key": "d",
+        "value": "Porque siempre tiene mayor prioridad que TCP."
+      }
+    ],
+    "correct": "c",
+    "explanation": "UDP no orientado a conexión y no confiable; el emisor envía los datagramas sin verificar si el receptor está listo y no rastrea si llegaron o no (sin ACKs).",
+    "ai_deduced": true,
+    "source": "PEP 1 - Redes 2022_2.pdf"
+  },
+  {
+    "subject": "Redes Computacionales",
+    "question": "¿Qué significa que el protocolo IP funcione bajo el concepto de 'mejor esfuerzo' (best effort)?",
+    "options": [
+      {
+        "key": "a",
+        "value": "Que utiliza toda la CPU disponible para enviar el paquete."
+      },
+      {
+        "key": "b",
+        "value": "Que intentará entregar el paquete, pero no garantiza la entrega, ni el orden, ni la integridad."
+      },
+      {
+        "key": "c",
+        "value": "Que retransmite automáticamente los paquetes si se pierden."
+      },
+      {
+        "key": "d",
+        "value": "Que establece un circuito virtual dedicado para asegurar la calidad."
+      }
+    ],
+    "correct": "b",
+    "explanation": "IP es un protocolo no confiable. 'Mejor esfuerzo' implica que la red hace lo posible por llevar el paquete a destino, pero si ocurre un error (congestión, fallo), el paquete se descarta sin notificar al origen (esa tarea recae en TCP si se usa).",
+    "ai_deduced": true,
+    "source": "PEP 1 - Redes 2022_2.pdf"
+  },
+  {
+    "subject": "Redes Computacionales",
+    "question": "En una red de difusión (broadcast) con medio compartido, ¿cómo se gestiona la recepción de mensajes?",
+    "options": [
+      {
+        "key": "a",
+        "value": "El mensaje va directo solo al destinatario mediante un circuito dedicado."
+      },
+      {
+        "key": "b",
+        "value": "Todos los terminales reciben el mensaje, pero solo el destinatario procesa los datos; cada terminal debe controlar el acceso al medio."
+      },
+      {
+        "key": "c",
+        "value": "Un servidor central decide quién habla y quién escucha."
+      },
+      {
+        "key": "d",
+        "value": "Los mensajes se almacenan en un búfer hasta que el medio está libre."
+      }
+    ],
+    "correct": "b",
+    "explanation": "En redes de difusión (como Ethernet antiguo o Wi-Fi), el medio es compartido. Físicamente todos 'escuchan' la señal, pero lógicamente solo la procesa quien coincide con la dirección de destino. El control de acceso al medio (MAC) es vital para evitar colisiones.",
+    "ai_deduced": true,
+    "source": "PEP 1 - Redes 2022_2.pdf"
+  },
+  {
+    "subject": "Redes Computacionales",
+    "question": "Si realizas un 'ping' a una dirección IP y obtienes respuesta, ¿qué protocolo de la capa de Internet está respondiendo?",
+    "options": [
+      {
+        "key": "a",
+        "value": "TCP"
+      },
+      {
+        "key": "b",
+        "value": "UDP"
+      },
+      {
+        "key": "c",
+        "value": "ICMP"
+      },
+      {
+        "key": "d",
+        "value": "ARP"
+      }
+    ],
+    "correct": "c",
+    "explanation": "El comando ping utiliza el protocolo ICMP (Internet Control Message Protocol), específicamente los mensajes Echo Request y Echo Reply, que se encapsulan directamente sobre IP.",
+    "ai_deduced": true,
+    "source": "PEP 1 - Redes 2022_2.pdf"
+  },
+  {
+    "subject": "Redes Computacionales",
+    "question": "En el contexto del enrutamiento entre subredes (ej. desde un PC en una LAN a un servidor en otra LAN), ¿qué ocurre con las direcciones MAC e IP en el paquete mientras viaja?",
+    "options": [
+      {
+        "key": "a",
+        "value": "Tanto las direcciones IP como las MAC cambian en cada salto de router."
+      },
+      {
+        "key": "b",
+        "value": "Las direcciones IP origen/destino se mantienen (generalmente), pero las direcciones MAC origen/destino cambian en cada enlace (salto)."
+      },
+      {
+        "key": "c",
+        "value": "Las direcciones MAC se mantienen de extremo a extremo, pero las IP cambian."
+      },
+      {
+        "key": "d",
+        "value": "Ninguna dirección cambia durante todo el trayecto."
+      }
+    ],
+    "correct": "b",
+    "explanation": "Las direcciones IP identifican los extremos finales y no cambian (salvo NAT). Las direcciones MAC son locales al enlace de datos; cada router reescribe la trama poniendo su propia MAC como origen y la MAC del siguiente salto como destino.",
+    "ai_deduced": true,
+    "source": "PEP 1 - Redes 2022_2.pdf"
+  },
+  {
+    "subject": "Redes Computacionales",
+    "question": "¿Cuál es la diferencia en el proceso de segmentación entre TCP y UDP?",
+    "options": [
+      {
+        "key": "a",
+        "value": "TCP segmenta el flujo de datos y numera los segmentos; UDP envía datagramas completos preservando los límites del mensaje."
+      },
+      {
+        "key": "b",
+        "value": "UDP segmenta los datos más pequeños que TCP."
+      },
+      {
+        "key": "c",
+        "value": "TCP no segmenta, envía todo el archivo de una vez."
+      },
+      {
+        "key": "d",
+        "value": "Ambos procesos son idénticos en la capa de transporte."
+      }
+    ],
+    "correct": "a",
+    "explanation": "TCP es un protocolo orientado a flujo (stream); divide los datos en segmentos según el MSS y los numera para reordenarlos. UDP es orientado a datagramas; la aplicación debe entregar bloques de datos que quepan en un paquete, y UDP respeta esos límites (message boundaries).",
+    "ai_deduced": true,
+    "source": "PEP 1 - Redes 2022_2.pdf"
+},
+{
     "subject": "Sistemas Operativos",
     "question": "Sólo en sistemas multicore puede ocurrir concurrencia.",
     "options": [
