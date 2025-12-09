@@ -381,7 +381,7 @@
         },
         {
             "subject": "Sistemas Operativos",
-            "question": "Dado el siguiente código:",
+            "question": "Dado el siguiente código, ¿cuál de las siguientes opciones es una posible salida por pantalla?:",
             "code": "pid = fork();\nif (pid==0) printf('x');\nelse printf('y');\nprintf('z');\nexit(0);",
             "options": [
                 {
@@ -644,6 +644,7 @@
         {
             "subject": "Sistemas Operativos",
             "question": "Dada la ejecución del código con un bucle fork, si en la línea 12 la variable i es 1, ¿qué afirmación es correcta sobre la memoria?",
+            "code": "int a = 0;\n int i;\n\n for(i=1;i<=2;i++){\n a++\n printf('primer a %d',a)\n a--;\nfork();\nprintf('segundo a a %d',a)\n}",
             "options": [
                 {
                     "key": "a",
@@ -826,6 +827,7 @@
         {
             "subject": "Sistemas Operativos",
             "question": "Si reemplazamos 'return add(x,-y)' por 'return x-y' (Tail Call Optimization), ¿qué efecto tiene en el Kernel Stack?",
+            "code": "int add (int x, int y){ return x + y;}\n int sub (int x, int y){ return add (x, -y);}\n\n int main(int argc, char const *argv[]) {\nint result = add(1,2);\nreturn result;\n}",
             "options": [
                 {
                     "key": "a",
@@ -930,32 +932,6 @@
         },
         {
             "subject": "Sistemas Operativos",
-            "question": "Dadas las direcciones de memoria: 0x5... (main), 0x5... (p, malloc), 0x7... (&p). ¿A qué segmentos corresponden?",
-            "options": [
-                {
-                    "key": "a",
-                    "value": "Code, User Stack, Heap"
-                },
-                {
-                    "key": "b",
-                    "value": "Code, Heap, User Stack"
-                },
-                {
-                    "key": "c",
-                    "value": "Heap, Code, Stack"
-                },
-                {
-                    "key": "d",
-                    "value": "Stack, Heap, Code"
-                }
-            ],
-            "explanation": "Las direcciones bajas (0x5...) suelen corresponder a Código (Texto) y Heap. Las direcciones altas (0x7...) corresponden al Stack. La dirección de 'main' es Código, el valor de 'p' (malloc) es Heap, y la dirección de la variable local '&p' es Stack.",
-            "correct": "b",
-            "source": "PEP1-SISTOPE-2024-2.pdf",
-            "ai_deduced": true
-        },
-        {
-            "subject": "Sistemas Operativos",
             "question": "¿Cuál es la utilización U del procesador en RR si el quantum Q es muy grande (mayor que S+T+E)?",
             "options": [
                 {
@@ -1001,8 +977,8 @@
                     "value": "HRRN"
                 }
             ],
-            "explanation": "Si todos tienen el número sorteado, el desempate es 'el que más tiempo ha estado esperando' (FIFO). Como tienen quantum, esto resulta en un comportamiento Round Robin (RR).",
-            "correct": "b",
+            "explanation": "Si todos tienen el número sorteado, el desempate es 'el que más tiempo ha estado esperando' (FIFO).",
+            "correct": "a",
             "source": "PEP1-SISTOPE-2024-1.pdf",
             "ai_deduced": true
         },
@@ -1034,23 +1010,24 @@
         },
         {
             "subject": "Sistemas Operativos",
-            "question": "En el código con fork en bucle: for(i=0; i<1; i++) ... if(!fork()) break; ... if(npid==pid) break; ¿Cuántos procesos se crean?",
+            "question": "En el código con fork en bucle...  ¿Cuántos procesos se crean?",
+            "code": "main() {\n pid_t pid, npid;\n int i, j;\n for (i = 0; i < 1; i++) {\n pid = getpid();\n for (int j = 0; j <= i+1; j++) if (!fork()) break;\n npid = getpid();\n if (npid == pid) break;\n }\n}",
             "options": [
                 {
                     "key": "a",
-                    "value": "1"
+                    "value": "El codigo genera un sólo proceso dado que fork está condicionando a la intrucción break"
                 },
                 {
                     "key": "b",
-                    "value": "3"
+                    "value": "3 procesos"
                 },
                 {
                     "key": "c",
-                    "value": "5"
+                    "value": "5 procesos"
                 },
                 {
                     "key": "d",
-                    "value": "9"
+                    "value": "33 procesos"
                 }
             ],
             "explanation": "El padre crea 2 hijos en el bucle interno. Los hijos rompen el bucle interno. En la verificación final, solo el padre cumple `npid==pid` y rompe el externo. Los hijos continúan pero el bucle externo termina inmediatamente por la condición `i<1`. Total: Padre + 2 Hijos = 3 procesos.",
