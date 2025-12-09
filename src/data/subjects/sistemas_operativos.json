@@ -878,6 +878,7 @@
         {
             "subject": "Sistemas Operativos",
             "question": "¿Cuántos procesos crea el código si N=2 y A=2 en los bucles anidados con fork condicional?",
+            "code": "for(p=0;p<N;p++) \n  if(fork()!=0) break; \nfor(a=0;a<A-1;a++) \n  if(fork()==0) break;",
             "options": [
                 {
                     "key": "a",
