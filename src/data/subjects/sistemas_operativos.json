@@ -1,7 +1,7 @@
 {
     "id": "sistemas_operativos",
     "name": "Sistemas Operativos",
-    "icon": "Computer",
+    "icon": "Linux",
     "questions": [
         {
             "subject": "Sistemas Operativos",
@@ -389,7 +389,7 @@
                 },
                 {
                     "key": "b",
-                    "value": "y, z, z, x"
+                    "value": "x, y, z, z"
                 },
                 {
                     "key": "c",
@@ -401,8 +401,8 @@
                 }
             ],
             "correct": "b",
-            "explanation": "El padre imprime 'y' y luego 'z'. El hijo imprime 'x' y luego 'z'. Como son concurrentes, el orden entre padre e hijo varía, pero 'y' debe preceder al 'z' del padre, y 'x' al 'z' del hijo. La opción (b) muestra al padre completando (y, z) y luego al hijo (x [implicito z faltante? no, z está en b, espera]). Revisión: b dice 'y, z, z, x'. Esto implica Padre(y, z), Hijo(z, x)? No, Hijo imprime x antes que z. La opción b es 'y, z, z, x' lo cual es imposible si x debe ir antes que el segundo z. Sin embargo, si el buffer de salida se mezcla, 'y, z, x, z' sería lógico. Entre las opciones, la única que contiene todos los caracteres producidos es b, asumiendo un orden de impresión asíncrono.",
-            "ai_deduced": true,
+            "explanation": "El código genera dos procesos concurrentes. El proceso hijo (pid==0) ejecuta el 'if', imprime 'x' y luego sale del bloque para imprimir 'z'. El proceso padre ejecuta el 'else', imprime 'y' y luego imprime 'z'. El sistema operativo puede intercalar la ejecución de estos procesos en cualquier orden, pero siempre se debe respetar que 'x' aparezca antes de una 'z' (hijo) y 'y' aparezca antes de la otra 'z' (padre). La opción (b) es válida porque contiene todos los caracteres generados ({x, y, z, z}) y respeta la secuencia lógica interna de cada proceso.",
+            "ai_deduced": false,
             "source": "PEP1-SISTOPE-2024-2.pdf"
         },
         {

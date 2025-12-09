@@ -1,6 +1,8 @@
 import { useState, useMemo, useEffect } from 'react';
 import { Box, Fade } from '@mui/material';
 import { NetworkCheck, Layers, Book, Computer, Science } from '@mui/icons-material'; // MUI Icons
+import { FaLinux } from 'react-icons/fa';
+
 import SubjectCard from './molecules/SubjectCard';
 import SettingsPanel from './organisms/SettingsPanel';
 
@@ -62,14 +64,15 @@ function MainMenu({ subjectsData, onStart }) {
     });
   };
 
-
+  const LinuxIcon = (props) => <Box component={FaLinux} {...props} />;
 
   const ICON_MAP = {
     NetworkCheck,
     Layers,
     Book,
     Computer,
-    Science
+    Science,
+    Linux: LinuxIcon
   };
 
   // Ensure question count doesn't exceed available questions
