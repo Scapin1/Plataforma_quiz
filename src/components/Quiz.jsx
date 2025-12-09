@@ -75,6 +75,7 @@ function Quiz({ questions, onFinish, onBack }) {
                     {/* Question Display */}
                     <QuestionDisplay
                         question={currentQuestion.question}
+                        code={currentQuestion.code}
                         isAiDeduced={currentQuestion.ai_deduced}
                     />
 

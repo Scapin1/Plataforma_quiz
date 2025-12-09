@@ -381,7 +381,8 @@
         },
         {
             "subject": "Sistemas Operativos",
-            "question": "Dado el código: pid = fork(); if (pid==0) printf('x'); else printf('y'); printf('z'); exit(0); ¿Cuál es una posible salida?",
+            "question": "Dado el siguiente código:",
+            "code": "pid = fork();\nif (pid==0) printf('x');\nelse printf('y');\nprintf('z');\nexit(0);",
             "options": [
                 {
                     "key": "a",
@@ -537,7 +538,8 @@
         },
         {
             "subject": "Sistemas Operativos",
-            "question": "¿Cuántos procesos crea el siguiente código si N=2 y A=2? for(p=0;p<N;p++) if(fork()!=0) break; for(a=0;a<A-1;a++) if(fork()==0) break;",
+            "question": "¿Cuántos procesos crea el siguiente código si N=2 y A=2?",
+            "code": "for(p=0;p<N;p++) \n  if(fork()!=0) break; \nfor(a=0;a<A-1;a++) \n  if(fork()==0) break;",
             "options": [
                 {
                     "key": "a",

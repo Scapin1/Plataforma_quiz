@@ -7,7 +7,7 @@ import HexagonBox from '../atoms/HexagonBox';
  * Displays the current question text inside a large hexagonal container.
  * Shows an AI warning if the question was deduced by AI.
  */
-const QuestionDisplay = ({ question, isAiDeduced }) => {
+const QuestionDisplay = ({ question, code, isAiDeduced }) => {
     return (
         <HexagonBox
             sx={{
@@ -41,6 +41,35 @@ const QuestionDisplay = ({ question, isAiDeduced }) => {
                 <Typography variant="h5" component="h2" fontWeight="bold" color="white">
                     {question}
                 </Typography>
+
+                {code && (
+                    <Box
+                        sx={{
+                            mt: 3,
+                            p: 2,
+                            width: '100%',
+                            maxWidth: '600px',
+                            backgroundColor: '#1e1e1e',
+                            borderRadius: 2,
+                            border: '1px solid rgba(255,255,255,0.1)',
+                            textAlign: 'left',
+                            overflowX: 'auto'
+                        }}
+                    >
+                        <Typography
+                            component="pre"
+                            sx={{
+                                fontFamily: '"Fira Code", "Roboto Mono", monospace',
+                                fontSize: '0.9rem',
+                                color: '#e0e0e0',
+                                margin: 0,
+                                whiteSpace: 'pre-wrap'
+                            }}
+                        >
+                            {code}
+                        </Typography>
+                    </Box>
+                )}
             </Box>
         </HexagonBox>
     );

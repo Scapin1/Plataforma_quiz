@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from 'react';
 import { Box, Fade } from '@mui/material';
 import { NetworkCheck, Layers, Book, Computer, Science } from '@mui/icons-material'; // MUI Icons
-import { FaLinux } from 'react-icons/fa';
+import { FaLinux } from 'react-icons/fa6';
 
 import SubjectCard from './molecules/SubjectCard';
 import SettingsPanel from './organisms/SettingsPanel';
