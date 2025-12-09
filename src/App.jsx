@@ -40,14 +40,22 @@ function App() {
     const { subject, source, count } = config;
 
     // Find the subject data object
-    const subjectData = subjectsData.find(s => s.name === subject);
+    let subjectData;
+    let filtered;
 
-    if (!subjectData) {
-      console.error("Subject not found:", subject);
-      return;
+    if (!subject) {
+      // General Mode: Aggregate all questions
+      subjectData = { name: 'Modo General' };
+      filtered = subjectsData.flatMap(s => s.questions);
+    } else {
+      // Specific Subject
+      subjectData = subjectsData.find(s => s.name === subject);
+      if (!subjectData) {
+        console.error("Subject not found:", subject);
+        return;
+      }
+      filtered = subjectData.questions;
     }
-
-    let filtered = subjectData.questions;
 
     if (source && source.length > 0) {
       filtered = filtered.filter(q => source.includes(q.source));
@@ -88,7 +96,7 @@ function App() {
       <CenteredLayout align={isQuiz ? 'right' : 'center'}>
         <header style={{ marginBottom: '2rem', textAlign: 'center', width: '100%' }}>
           <GradientText variant="h2" component="h1">
-            PLATAFORMA DE ESTUDIO
+            SYNAPSE
           </GradientText>
         </header>
 

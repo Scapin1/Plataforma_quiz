@@ -1,6 +1,7 @@
-import { Box, Typography, FormControl, Select, MenuItem, Chip } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import NeonCard from '../atoms/NeonCard';
 import GameButton from '../atoms/GameButton';
+import SourceSelector from '../molecules/SourceSelector';
 import { PlayArrow } from '@mui/icons-material';
 
 /**
@@ -46,30 +47,11 @@ const SettingsPanel = ({
 
             {/* Source Selection */}
             <Box>
-                <Typography variant="subtitle2" color="text.secondary" mb={1}>
-                    FUENTES (Opcional)
-                </Typography>
-                <FormControl fullWidth>
-                    <Select
-                        multiple
-                        value={selectedSources}
-                        onChange={(e) => onSourceChange(e.target.value)}
-                        renderValue={(selected) => (
-                            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                                {selected.map((value) => (
-                                    <Chip key={value} label={value} size="small" color="primary" />
-                                ))}
-                            </Box>
-                        )}
-                        sx={{ bgcolor: 'background.paper', borderRadius: 2 }}
-                    >
-                        {sources.map((source) => (
-                            <MenuItem key={source} value={source}>
-                                {source}
-                            </MenuItem>
-                        ))}
-                    </Select>
-                </FormControl>
+                <SourceSelector
+                    sources={sources}
+                    selectedSources={selectedSources}
+                    onSourceChange={onSourceChange}
+                />
             </Box>
 
             {/* Question Count */}
