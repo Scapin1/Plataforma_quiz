@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Box, Fade, IconButton, Tooltip, Typography } from '@mui/material';
 import { Flag, ArrowBack } from '@mui/icons-material';
 import ProgressBar from './molecules/ProgressBar';
@@ -21,25 +21,45 @@ function Quiz({ questions, onFinish, onBack }) {
 
     const currentQuestion = questions[currentIndex];
 
+    // Sync state when navigating through questions
+    useEffect(() => {
+        if (answers[currentIndex]) {
+            // Viewing history: restore state
+            setSelectedOption(answers[currentIndex].selected);
+            setShowExplanation(true);
+        } else {
+            // New question: reset state
+            setSelectedOption(null);
+            setShowExplanation(false);
+        }
+    }, [currentIndex, answers]);
+
     const handleOptionSelect = (key) => {
         if (showExplanation) return;
         setSelectedOption(key);
     };
 
     const handleSubmitAnswer = () => {
+        // Prevent double submission
+        if (answers[currentIndex]) return;
+
         const isCorrect = selectedOption === currentQuestion.correct;
         setAnswers([...answers, { question: currentQuestion, selected: selectedOption, isCorrect }]);
         if (isCorrect) setScore(score + 1);
-        setShowExplanation(true);
+        // showExplanation set by useEffect
     };
 
     const handleNext = () => {
         if (currentIndex < questions.length - 1) {
             setCurrentIndex(currentIndex + 1);
-            setSelectedOption(null);
-            setShowExplanation(false);
         } else {
             onFinish([...answers], score);
+        }
+    };
+
+    const handlePrevious = () => {
+        if (currentIndex > 0) {
+            setCurrentIndex(currentIndex - 1);
         }
     };
 
@@ -50,13 +70,27 @@ function Quiz({ questions, onFinish, onBack }) {
     return (
         <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
 
-            {/* Header: Back, Progress & Report */}
+            {/* Fixed Back to Menu Button */}
+            <Tooltip title="Volver al menú">
+                <IconButton
+                    onClick={onBack}
+                    sx={{
+                        position: 'fixed',
+                        top: 20,
+                        left: 20,
+                        zIndex: 1000,
+                        color: 'rgba(255,255,255,0.7)',
+                        bgcolor: 'rgba(0,0,0,0.3)',
+                        '&:hover': { color: '#fff', bgcolor: 'rgba(255,255,255,0.2)' }
+                    }}
+                >
+                    <ArrowBack />
+                </IconButton>
+            </Tooltip>
+
+            {/* Header: Progress & Report */}
             <Box sx={{ width: '100%', maxWidth: 'lg', mb: 4, display: 'flex', alignItems: 'center', gap: 2 }}>
-                <Tooltip title="Volver al menú">
-                    <IconButton onClick={onBack} sx={{ color: 'rgba(255,255,255,0.7)', '&:hover': { color: '#fff', bgcolor: 'rgba(255,255,255,0.1)' } }}>
-                        <ArrowBack />
-                    </IconButton>
-                </Tooltip>
+                {/* Spacer to keep alignment if needed or just remove ArrowBack from flow */}
 
                 <Box sx={{ flexGrow: 1 }}>
                     <ProgressBar current={currentIndex + 1} total={questions.length} />
@@ -110,25 +144,38 @@ function Quiz({ questions, onFinish, onBack }) {
                     </Fade>
                 )}
 
-                {!showExplanation ? (
-                    <GameButton
-                        size="large"
-                        disabled={!selectedOption}
-                        onClick={handleSubmitAnswer}
-                        sx={{ width: { xs: '100%', md: 'auto' }, minWidth: 200 }}
-                    >
-                        CONFIRMAR
-                    </GameButton>
-                ) : (
-                    <GameButton
-                        size="large"
-                        color="success"
-                        onClick={handleNext}
-                        sx={{ width: { xs: '100%', md: 'auto' }, minWidth: 200 }}
-                    >
-                        {currentIndex < questions.length - 1 ? 'SIGUIENTE' : 'FINALIZAR'}
-                    </GameButton>
-                )}
+                <Box sx={{ display: 'flex', gap: 2, width: { xs: '100%', md: 'auto' } }}>
+                    {currentIndex > 0 && (
+                        <GameButton
+                            size="large"
+                            variant="outlined"
+                            onClick={handlePrevious}
+                            sx={{ width: { xs: '50%', md: 'auto' }, minWidth: 140 }}
+                        >
+                            ANTERIOR
+                        </GameButton>
+                    )}
+
+                    {!showExplanation ? (
+                        <GameButton
+                            size="large"
+                            disabled={!selectedOption}
+                            onClick={handleSubmitAnswer}
+                            sx={{ width: { xs: currentIndex > 0 ? '50%' : '100%', md: 'auto' }, minWidth: 200 }}
+                        >
+                            CONFIRMAR
+                        </GameButton>
+                    ) : (
+                        <GameButton
+                            size="large"
+                            color="success"
+                            onClick={handleNext}
+                            sx={{ width: { xs: currentIndex > 0 ? '50%' : '100%', md: 'auto' }, minWidth: 200 }}
+                        >
+                            {currentIndex < questions.length - 1 ? 'SIGUIENTE' : 'FINALIZAR'}
+                        </GameButton>
+                    )}
+                </Box>
             </Box>
         </Box>
     );
