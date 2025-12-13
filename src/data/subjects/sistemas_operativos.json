@@ -427,8 +427,8 @@
                     "value": "306 ms"
                 }
             ],
-            "correct": "c",
-            "explanation": "HZ=10 implica ticks cada 100ms. El quantum es 250ms. El SO verifica el tiempo en cada tick (100, 200, 300). A los 100ms y 200ms el proceso sigue. A los 300ms, el proceso ha excedido 250ms, por lo que se interrumpe. El tiempo transcurrido incluye 3 periodos de 100ms más los overheads administrativos previos (2ms en tick 1, 2ms en tick 2). Total = 300ms + 4ms = 304ms.",
+            "correct": "d",
+            "explanation": "HZ=10 implica ticks cada 100ms. El quantum es 250ms. El SO verifica el tiempo en cada tick (100, 200, 300). A los 100ms y 200ms el proceso sigue. A los 300ms, el proceso ha excedido 250ms, por lo que se interrumpe. El tiempo transcurrido incluye 3 periodos de 100ms más los overheads administrativos previos (2ms en tick 1, 2ms en tick 2, 2ms ultimo tick). Total = 300ms + 6ms = 306ms.",
             "ai_deduced": true,
             "source": "PEP1-SISTOPE-2024-2.pdf"
         },
@@ -1060,6 +1060,432 @@
             "correct": "c",
             "source": "PEP1-SISTOPE-2024-1.pdf",
             "ai_deduced": true
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Una de las siguientes afirmaciones NO es una característica de una condición de carrera (CC):",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "El resultado de una operación sobre memoria compartida depende del orden de ejecución y velocidad relativa de dos o más hebras"
+                },
+                {
+                    "key": "b",
+                    "value": "La CC sólo ocurre en sistemas multiprocesador o multicore"
+                },
+                {
+                    "key": "c",
+                    "value": "La CC es un error potencial de concurrencia"
+                },
+                {
+                    "key": "d",
+                    "value": "El resultado de una CC podría llevar a un resultado correcto azarosamente"
+                }
+            ],
+            "correct": "b",
+            "explanation": "Es falso que solo ocurra en multicore. En sistemas monoprocesador con tiempo compartido (time-slicing), la intercalación de instrucciones (context switching) en secciones críticas también provoca condiciones de carrera.",
+            "ai_deduced": true,
+            "source": "PEP2-SISTOPE-2023-2.pdf",
+            "code": null
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "La sección crítica (SC) se define cómo:",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Código ejecutado por sólo una hebra realizando operaciones de escritura sobre memoria"
+                },
+                {
+                    "key": "b",
+                    "value": "Código ejecutado por dos hebras realizando ambas operaciones de escritura sobre memoria local o privada"
+                },
+                {
+                    "key": "c",
+                    "value": "Código ejecutado por dos o más hebras donde por lo menos una realiza operaciones de escritura sobre memoria global o compartida"
+                },
+                {
+                    "key": "d",
+                    "value": "Código ejecutado por varias hebras donde todas realizan operaciones de escritura sobre memoria compartida"
+                }
+            ],
+            "correct": "c",
+            "explanation": "La definición formal de Sección Crítica implica el acceso concurrente a recursos compartidos donde al menos un acceso es de escritura (modificación), lo que puede generar inconsistencias si no hay exclusión mutua.",
+            "ai_deduced": true,
+            "source": "PEP2-SISTOPE-2023-2.pdf",
+            "code": null
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Cuál de las siguientes afirmaciones es correcta:",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "El peluquero nunca le cortará el pelo a un cliente dado que el semáforo hayClientes nunca es distinto de cero"
+                },
+                {
+                    "key": "b",
+                    "value": "Un cliente nunca será atendido por el peluquero dado que el semáforo peluqueroListo nunca es distinto de cero"
+                },
+                {
+                    "key": "c",
+                    "value": "Los clientes pueden sufrir inanición"
+                },
+                {
+                    "key": "d",
+                    "value": "El semáforo salaDeEspera no es necesario, los demás semáforos proveen EM"
+                }
+            ],
+            "correct": "c",
+            "explanation": "En el problema del barbero dormilón, si la implementación de semáforos no garantiza un orden FIFO estricto (Strong Semaphore) y hay un flujo continuo de clientes, es posible que un cliente específico nunca logre adquirir el recurso (silla), sufriendo inanición.",
+            "ai_deduced": true,
+            "source": "PEP2-SISTOPE-2023-2.pdf",
+            "code": "void *cliente (void *data) {\n while(1){\n  semWait(&salaDeEspera);\n  if (sillasLibres > 0) {\n   sillasLibres--;\n   semSignal(&hayClientes);\n   semSignal(&salaDeEspera);\n   semWait(&peluqueroListo);\n   // El peluquero le corta el pelo al cliente\n  } else semSignal(&salaDeEspera); // el cliente se va, no espera\n }\n}"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Teniendo en cuenta los conceptos de Condición de Carrera (CC), Sección Crítica (SC) y Exclusión Mutua (EM) indique cuál de las siguientes afirmaciones es correcta:",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Si dos o más hebras entran a una misma SC(a), entonces ninguna otra hebra puede entrar a otra SC(b)."
+                },
+                {
+                    "key": "b",
+                    "value": "Si se provee EM a una SC(a), nunca ocurrirá una CC en la respectiva SC(a)."
+                },
+                {
+                    "key": "c",
+                    "value": "Una CC no sólo ocurre cuando se modifica memoria compartida, sino también, y esencialmente, cuando se modifica memoria local o privada."
+                },
+                {
+                    "key": "d",
+                    "value": "La CC sólo ocurre en sistemas multiprocesador o multicore."
+                }
+            ],
+            "correct": "b",
+            "explanation": "El objetivo principal de la Exclusión Mutua (EM) es evitar Condición de Carrera (CC) asegurando que solo un proceso ejecute la Sección Crítica a la vez.",
+            "ai_deduced": true,
+            "source": "PEP2-SISTOPE-2024-1.pdf",
+            "code": null
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Busy Waiting o espera activa es una característica de las soluciones por hardware y software para implementar enterSC() y exitSC(). Con respecto a esta técnica se puede afirmar que:",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "La hebra que invoca enterSC(a) se bloquea (pasa a estado bloqueado) a la espera que otra hebra en la SC(a) invoque exitSC(a)."
+                },
+                {
+                    "key": "b",
+                    "value": "Sólo una hebra que invoca enterSC(a) estará en espera activa. Ninguna otra hebra que invoque enterSC(a) lo estará."
+                },
+                {
+                    "key": "c",
+                    "value": "Ninguna solución basada en espera activa provee EM."
+                },
+                {
+                    "key": "d",
+                    "value": "Una hebra en espera activa puede consumir todo su quantum de tiempo ejecutando enterSC(a)."
+                }
+            ],
+            "correct": "d",
+            "explanation": "La espera activa consiste en un bucle que evalúa una condición repetidamente. Esto consume ciclos de CPU (y el quantum asignado) sin realizar trabajo útil, a diferencia de una espera pasiva (sleep/block).",
+            "ai_deduced": true,
+            "source": "PEP2-SISTOPE-2024-1.pdf",
+            "code": null
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "En un sistema se implementa el algoritmo del banquero que, a partir de un estado inicial, calcula si corresponde a un estado seguro o inseguro. Para lo anterior se puede afirmar que:",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "Un estado inseguro implica necesariamente que hay deadlock."
+                },
+                {
+                    "key": "b",
+                    "value": "Un estado seguro garantiza que existe al menos una secuencia de procesos que evita el deadlock."
+                },
+                {
+                    "key": "c",
+                    "value": "El algoritmo del banquero previene el deadlock negando la condición de espera circular."
+                },
+                {
+                    "key": "d",
+                    "value": "Solo funciona para recursos de una sola instancia."
+                }
+            ],
+            "correct": "b",
+            "explanation": "Por definición, un estado es seguro si existe al menos una secuencia de ejecución segura (safe sequence) donde todos los procesos pueden obtener sus recursos máximos y terminar.",
+            "ai_deduced": true,
+            "source": "PEP2-SISTOPE-2024-1.pdf",
+            "code": null
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Para la implementación anterior es posible afirmar lo siguiente:",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "La implementación propuesta no provee EM."
+                },
+                {
+                    "key": "b",
+                    "value": "La implementación propuesta produce deadlock."
+                },
+                {
+                    "key": "c",
+                    "value": "La implementación propuesta no produce inanición."
+                },
+                {
+                    "key": "d",
+                    "value": "La implementación propuesta no permite progreso."
+                }
+            ],
+            "correct": "a",
+            "explanation": "El código usa `while (mutex->flag==1); mutex->flag=1;`. Hay una condición de carrera entre la lectura del flag en el while y la escritura en la siguiente línea. Dos hebras pueden ver el flag en 0 simultáneamente y ambas entrar a la SC, violando la Exclusión Mutua.",
+            "ai_deduced": true,
+            "source": "PEP2-SISTOPE-2025-1.pdf",
+            "code": "typedef struct _lock_t { int flag; } lock_t;\nvoid init(lock_t *mutex) { mutex->flag = 0; }\nvoid lock(lock_t *mutex) {\n  while (mutex->flag == 1);\n  mutex->flag = 1;\n}\nvoid unlock(lock_t *mutex) { mutex->flag = 0; }"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "El código anterior utiliza la técnica vista en clases conocida como busy-waiting. El problema con esta técnica es:",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "No funciona para hebras que se ejecutan en un multiprocesador."
+                },
+                {
+                    "key": "b",
+                    "value": "No funciona para hebras que se ejecutan en un monoprocesador con planificación no apropiativa."
+                },
+                {
+                    "key": "c",
+                    "value": "Desperdicia tiempo de CPU evaluando una condición que podría no cambiar pronto."
+                },
+                {
+                    "key": "d",
+                    "value": "Siempre genera deadlock."
+                }
+            ],
+            "correct": "c",
+            "explanation": "La espera activa (busy-waiting) mantiene la CPU ocupada en un bucle infinito improductivo, desperdiciando ciclos que podrían usar otros procesos. Además, en sistemas no apropiativos (opción b también es técnicamente problemática), puede causar deadlock si el proceso que tiene el lock no puede obtener CPU para liberarlo.",
+            "ai_deduced": true,
+            "source": "PEP2-SISTOPE-2025-1.pdf",
+            "code": null
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Se provee EM siempre y cuando:",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "sem_init(&s, 0);"
+                },
+                {
+                    "key": "b",
+                    "value": "sem_init(&s, 1);"
+                },
+                {
+                    "key": "c",
+                    "value": "sem_init(&s, 2);"
+                },
+                {
+                    "key": "d",
+                    "value": "sem_init(&s, 3);"
+                }
+            ],
+            "correct": "b",
+            "explanation": "Para usar un semáforo como Mutex (Exclusión Mutua), debe inicializarse en 1. Esto permite que el primer `wait` tenga éxito (baja a 0) y los siguientes se bloqueen.",
+            "ai_deduced": true,
+            "source": "PEP2-SISTOPE-2025-1.pdf",
+            "code": "void worker (void *param) {\n while(true) {\n  sem_wait(&s); // enterSC()\n  // SC\n  sem_post(&s); // exitSC()\n }\n}"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Asumiendo que el código llama a las librerías y no existen errores de compilación. ¿Cuáles de las siguientes salidas son posible? Explique y argumente en cada una de las alternativas.",
+            "options": [
+                {
+                    "key": "a",
+                    "value": "abcde"
+                },
+                {
+                    "key": "b",
+                    "value": "edcba"
+                },
+                {
+                    "key": "c",
+                    "value": "cccde"
+                },
+                {
+                    "key": "d",
+                    "value": "eeeee"
+                },
+                {
+                    "key": "e",
+                    "value": "aaaaa"
+                }
+            ],
+            "correct": "a",
+            "explanation": "El código asigna memoria dinámica (`malloc`) en cada iteración, por lo que cada hilo recibe una dirección de memoria distinta con su propia letra ('a', 'b', etc.). No hay condición de carrera sobre los datos. Sin embargo, el orden de ejecución de los hilos es indeterminado. Por tanto, cualquier permutación de 'a,b,c,d,e' es posible (opciones a y b son válidas, pero 'a' es la más intuitiva como 'posible'). Las opciones c, d, e implican repetición de letras que no ocurre en el código.",
+            "ai_deduced": true,
+            "source": "PEP2-SISTOPE-2016-1.pdf",
+            "code": "void* printer(void *arg) {\n char* p = (char*) arg;\n printf(\"%c\",*p);\n return NULL;\n}\nint main(int argc, char *argv[]) {\n pthread_t p[5];\n for (int i = 0; i < 5; i++) {\n  char *c = malloc(sizeof(char));\n  *c = 'a' + i;\n  pthread_create(&p[i], NULL, printer, (void*) c);\n }\n //...\n}"
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "SemSignal() para un semáforo contador siempre despierta a un proceso.",
+            "options": [
+                {
+                    "key": "V",
+                    "value": "Verdadero"
+                },
+                {
+                    "key": "F",
+                    "value": "Falso"
+                }
+            ],
+            "correct": "F",
+            "explanation": "SemSignal (o post/up) incrementa el contador del semáforo. Solo despierta a un proceso si hay procesos bloqueados en la cola de espera (si el valor era negativo antes del incremento). Si no hay nadie esperando, simplemente incrementa el valor y nadie despierta.",
+            "ai_deduced": true,
+            "source": "PEP2-SISTOPE-2017-1.pdf",
+            "code": null
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Los monitores implementan el acceso exclusivo a sus funciones.",
+            "options": [
+                {
+                    "key": "V",
+                    "value": "Verdadero"
+                },
+                {
+                    "key": "F",
+                    "value": "Falso"
+                }
+            ],
+            "correct": "V",
+            "explanation": "Esta es la definición fundamental de Monitor: una estructura de alto nivel que garantiza que solo un proceso puede estar activo dentro del monitor (ejecutando cualquiera de sus métodos) a la vez.",
+            "ai_deduced": true,
+            "source": "PEP2-SISTOPE-2017-1.pdf",
+            "code": null
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Si se restringen las peticiones de recursos de tal manera que no exista una espera circular, deadlock se podría prevenir permanentemente.",
+            "options": [
+                {
+                    "key": "V",
+                    "value": "Verdadero"
+                },
+                {
+                    "key": "F",
+                    "value": "Falso"
+                }
+            ],
+            "correct": "V",
+            "explanation": "La espera circular es una de las 4 condiciones necesarias para el Deadlock (Coffman). Si se elimina estructuralmente (por ejemplo, obligando a pedir recursos en orden numérico creciente), el deadlock se previene matemáticamente.",
+            "ai_deduced": true,
+            "source": "PEP2-SISTOPE-2017-1.pdf",
+            "code": null
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Una condición de carrera siempre se da fuera de las secciones críticas.",
+            "options": [
+                {
+                    "key": "V",
+                    "value": "Verdadero"
+                },
+                {
+                    "key": "F",
+                    "value": "Falso"
+                }
+            ],
+            "correct": "F",
+            "explanation": "La condición de carrera ocurre precisamente DENTRO de las secciones críticas cuando no están protegidas por exclusión mutua, permitiendo accesos concurrentes no controlados.",
+            "ai_deduced": true,
+            "source": "PEP2-SISTOPE-2021-1.pdf",
+            "code": null
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "La instrucción de hardware exchange() (o swap()) puede ser interrumpida durante su ejecución.",
+            "options": [
+                {
+                    "key": "V",
+                    "value": "Verdadero"
+                },
+                {
+                    "key": "F",
+                    "value": "Falso"
+                }
+            ],
+            "correct": "F",
+            "explanation": "Las instrucciones de hardware diseñadas para sincronización (como Test-And-Set o Swap/Exchange) son atómicas por definición; el hardware garantiza que se ejecutan indivisiblemente.",
+            "ai_deduced": true,
+            "source": "PEP2-SISTOPE-2021-1.pdf",
+            "code": null
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "En un sistema con TLB, y tabla invertida de página, el número de accesos a memoria para acceder un dato, una vez traducida la dirección virtual es siempre 1.",
+            "options": [
+                {
+                    "key": "V",
+                    "value": "Verdadero"
+                },
+                {
+                    "key": "F",
+                    "value": "Falso"
+                }
+            ],
+            "correct": "V",
+            "explanation": "La pregunta dice 'una vez traducida la dirección virtual'. Si ya tenemos la dirección física (ya sea por TLB hit o tras buscar en la tabla), el acceso al dato real es solo 1 acceso a memoria. (Si se refiere al proceso total con TLB miss, serían más, pero la frase 'una vez traducida' implica el paso final).",
+            "ai_deduced": true,
+            "source": "PEP2-SISTOPE-2021-1.pdf",
+            "code": null
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "Los monitores garantizan el primer requerimiento de Exclusión Mutua.",
+            "options": [
+                {
+                    "key": "V",
+                    "value": "Verdadero"
+                },
+                {
+                    "key": "F",
+                    "value": "Falso"
+                }
+            ],
+            "correct": "V",
+            "explanation": "Sí, los monitores aseguran implícitamente la Exclusión Mutua en sus procedimientos. Solo un hilo puede ejecutar código dentro del monitor a la vez.",
+            "ai_deduced": true,
+            "source": "PEP2-SISTOPE-2021-2.pdf",
+            "code": null
+        },
+        {
+            "subject": "Sistemas Operativos",
+            "question": "En un sistema de particionamiento fijo de tamaño de partición 500 kb, si se aloja un proceso de 450 kb, se crea una nueva partición libre de 450 kb y se produce fragmentación externa de 50 kb.",
+            "options": [
+                {
+                    "key": "V",
+                    "value": "Verdadero"
+                },
+                {
+                    "key": "F",
+                    "value": "Falso"
+                }
+            ],
+            "correct": "F",
+            "explanation": "En particionamiento fijo NO se crean nuevas particiones. El proceso ocupa la partición de 500kb entera y los 50kb sobrantes se pierden dentro de esa partición; eso es Fragmentación Interna, no externa.",
+            "ai_deduced": true,
+            "source": "PEP2-SISTOPE-2021-2.pdf",
+            "code": null
         }
     ]
 }
